@@ -8,4 +8,4 @@ a{color:#2d5d4b}header,footer{background:#2d5d4b;color:#fff;padding:14px 18px}he
 form{background:#fff;border:1px solid #e6e1d8;border-radius:12px;padding:16px;display:grid;gap:10px}label{font-size:.9rem;font-weight:600;display:grid;gap:4px}
 input,select,textarea{font:inherit;padding:9px;border:1px solid #cfc8bb;border-radius:6px;width:100%}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .note{font-size:.85rem;color:#555}table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1px solid #e6e1d8;padding:6px;text-align:left}
-.hp{position:absolute;left:-5000px}
+.hp{position:absolute;left:-5000px}.banner img{width:100%;height:auto;border-radius:12px;display:block}.card img{aspect-ratio:1/1;object-fit:cover}
