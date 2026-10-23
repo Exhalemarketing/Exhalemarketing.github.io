@@ -1,0 +1,11 @@
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#222;background:#fbfaf8}
+a{color:#2d5d4b}header,footer{background:#2d5d4b;color:#fff;padding:14px 18px}header a,footer a{color:#fff;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:18px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border:1px solid #e6e1d8;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}.card .b{padding:14px;flex:1;display:flex;flex-direction:column;gap:6px}
+.card img,.hero img{width:100%;height:auto;display:block;background:#f4f1ec}.price{font-size:1.4rem;font-weight:700;color:#1f4637}
+.ship{font-size:.9rem;background:#eef5f1;border-radius:6px;padding:4px 8px;display:inline-block}.btn{display:inline-block;background:#2d5d4b;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;border:0;font-size:1rem;cursor:pointer}
+.two{display:grid;grid-template-columns:1fr;gap:22px}@media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
+form{background:#fff;border:1px solid #e6e1d8;border-radius:12px;padding:16px;display:grid;gap:10px}label{font-size:.9rem;font-weight:600;display:grid;gap:4px}
+input,select,textarea{font:inherit;padding:9px;border:1px solid #cfc8bb;border-radius:6px;width:100%}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:.85rem;color:#555}table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border-bottom:1px solid #e6e1d8;padding:6px;text-align:left}
+.hp{position:absolute;left:-5000px}
