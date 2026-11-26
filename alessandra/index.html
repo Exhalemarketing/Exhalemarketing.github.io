@@ -777,7 +777,8 @@ function draw() {
     const white=ctx.createLinearGradient(source.x,source.y,entry.x,entry.y);
     white.addColorStop(0,'rgba(255,247,216,'+(.25*lightAmount)+')');
     white.addColorStop(1,'rgba(255,255,255,'+(.92*lightAmount)+')');
-    beam(source,entry,5,2.5,white,1.6);
+    beam(source,entry,19,7,white,7);
+    beam(source,entry,9,4,white,2);
     const labelX=w*(mobile?.56:.62);
     const end={x:labelX-8,y:h*(.23+dominant*.17)};
     // Hard clipping boundary protects the entire label column.
@@ -785,8 +786,14 @@ function draw() {
     if(end.x>exit.x+2){
       const g=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
       g.addColorStop(0,color(dominant,.88*lightAmount));g.addColorStop(.8,color(dominant,.69*lightAmount));g.addColorStop(1,color(dominant,.12*lightAmount));
-      beam(exit,end,1.7,3.5,g,1.2);
-      beam(exit,end,.6,1.1,color(dominant,.67*lightAmount));
+      beam(exit,end,8,14,g,5);
+      beam(exit,end,4.5,8,g,1.8);
+      beam(exit,end,1.7,3.2,color(dominant,.55*lightAmount),.8);
+      const core=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
+      core.addColorStop(0,'rgba(255,255,255,'+(.88*lightAmount)+')');
+      core.addColorStop(.45,'rgba(255,255,255,'+(.53*lightAmount)+')');
+      core.addColorStop(1,color(dominant,.12*lightAmount));
+      beam(exit,end,1.1,1.7,core,.7);
     }
     ctx.restore();
   }
@@ -835,8 +842,11 @@ function draw() {
     for(const p of hull.slice().reverse()){while(upper.length>=2&&cross(upper[upper.length-2],upper[upper.length-1],p)<=0)upper.pop();upper.push(p);}
     path(lower.slice(0,-1).concat(upper.slice(0,-1)));ctx.clip();
     const inner={x:cx-s*.12,y:cy-s*.04};
-    beam(entry,inner,2.5,1.6,'rgba(255,255,255,'+(.9*lightAmount)+')',.8);
-    beam(inner,exit,1.4,2.2,color(dominant,.85*lightAmount),.7);
+    beam(entry,inner,8,5,'rgba(255,255,255,'+(.65*lightAmount)+')',3);
+    beam(entry,inner,3.5,2.5,'rgba(255,255,255,'+(.93*lightAmount)+')',.8);
+    beam(inner,exit,5,9,color(dominant,.52*lightAmount),3);
+    beam(inner,exit,2.8,5,color(dominant,.8*lightAmount),1);
+    beam(inner,exit,1,1.5,'rgba(255,255,255,'+(.65*lightAmount)+')',.7);
     ctx.restore();
   }
   for (let i = 2; i < 6; i++) {
