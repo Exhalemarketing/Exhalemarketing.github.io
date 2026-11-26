@@ -755,7 +755,7 @@ function draw() {
     ctx.fill();
   }
   ctx.restore();
-  // Clean refraction: a single narrow beam appears only during motion.
+  // Separate optical shafts appear during movement, with angle-linked emphasis.
   const phase=yaw*1.8+pitch*.7;
   const hues=[274,42,338,204];
   const index=((phase/(Math.PI/2))%4+4)%4;
@@ -780,20 +780,26 @@ function draw() {
     beam(source,entry,19,7,white,7);
     beam(source,entry,9,4,white,2);
     const labelX=w*(mobile?.56:.62);
-    const end={x:labelX-8,y:h*(.23+dominant*.17)};
-    // Hard clipping boundary protects the entire label column.
-    ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,labelX-5),h);ctx.clip();
-    if(end.x>exit.x+2){
+    // Four separate shafts, each ending at its own navigation marker.
+    // Rotation brings one shaft into focus without washing over the text.
+    ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,labelX-4),h);ctx.clip();
+    for(let i=0;i<4;i++){
+      const strength=(.5+.5*Math.cos(phase-i*Math.PI/2));
+      const intensity=lightAmount*(.13+.87*Math.pow(strength,4));
+      const end={x:labelX-7,y:h*(.23+i*.17)};
+      if(end.x<=exit.x+2)continue;
       const g=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
-      g.addColorStop(0,color(dominant,.88*lightAmount));g.addColorStop(.8,color(dominant,.69*lightAmount));g.addColorStop(1,color(dominant,.12*lightAmount));
-      beam(exit,end,8,14,g,5);
-      beam(exit,end,4.5,8,g,1.8);
-      beam(exit,end,1.7,3.2,color(dominant,.55*lightAmount),.8);
+      g.addColorStop(0,color(i,.78*intensity));
+      g.addColorStop(.55,color(i,.68*intensity));
+      g.addColorStop(1,color(i,.40*intensity));
+      const width=Math.min(12,h*.021);
+      beam(exit,end,3,width,g,3);
+      beam(exit,end,2,width*.65,g,1.2);
       const core=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
-      core.addColorStop(0,'rgba(255,255,255,'+(.88*lightAmount)+')');
-      core.addColorStop(.45,'rgba(255,255,255,'+(.53*lightAmount)+')');
-      core.addColorStop(1,color(dominant,.12*lightAmount));
-      beam(exit,end,1.1,1.7,core,.7);
+      core.addColorStop(0,'rgba(255,255,255,'+(.82*intensity)+')');
+      core.addColorStop(.45,'rgba(255,255,255,'+(.48*intensity)+')');
+      core.addColorStop(1,color(i,.30*intensity));
+      beam(exit,end,.9,width*.25,core,.7);
     }
     ctx.restore();
   }
