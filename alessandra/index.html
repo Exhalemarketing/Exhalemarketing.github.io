@@ -536,7 +536,16 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
  .about-content{padding:30px 6vw;}
 }
 
-:root{font-family:Poppins,Georgia,sans-serif;color:#30463e;background:#faf6ed}h1,h2,h3{font-weight:300;letter-spacing:-.045em}h1{font-size:clamp(38px,4.9vw,78px);white-space:normal}.hero{background:radial-gradient(ellipse at 15% 10%,#fffefb,transparent 65%),linear-gradient(115deg,#fbf8ef,#eee5d6)}.optics::before{content:'';position:absolute;inset:7% 42% 8% 4%;border:1px solid #b79c6844;border-radius:48% 48% 0 0;box-shadow:inset 0 0 0 7px #fff7,inset 0 0 0 8px #b79c6828;pointer-events:none}.ray{font-family:Poppins,sans-serif;background:transparent;box-shadow:none;backdrop-filter:none;border-radius:0;min-height:48px;max-width:45%;white-space:normal;padding:8px 3px;text-align:left;color:#30463e;gap:7px}.ray strong{font-weight:500;font-size:clamp(10px,1vw,15px);display:block}.ray small{display:block;font-size:10px;color:#746451}.ray:hover,.ray:focus-visible{background:#fff7}.ray i{flex:none}.ray span{margin-left:3px}.deck-feature{padding:55px 9vw;display:grid;grid-template-columns:minmax(130px,230px) 1fr;gap:7vw;align-items:center;background:#f8f3e9}.deck-feature h2{font-size:clamp(30px,4vw,56px);margin:12px 0}.deck-art{aspect-ratio:2/3;background:#244b40;border:8px double #b99b62;color:#e5c788;display:grid;place-items:center;text-align:center;box-shadow:8px 12px 26px #4b3c2925;border-radius:7px;font-family:Georgia,serif;font-size:30px;transform:rotate(-4deg)}.deck-art div{border:1px solid #b99b62;padding:25px 12px;border-radius:48% 48% 0 0}.deck-art small{font-size:10px;letter-spacing:2px}textarea{width:100%;font:inherit;background:#fffdf8;border:1px solid #b9a489;padding:12px}.story-action{border:0}.story-action.secondary{border:1px solid #695542}canvas{touch-action:pan-y}.copy{pointer-events:auto}nav strong{font-size:clamp(17px,2vw,27px)}@media(max-width:720px){.hero .optics{height:365px}.ray strong{font-size:11px}.ray small{font-size:9px}.deck-feature{padding:35px 6vw;grid-template-columns:105px 1fr;gap:20px}.deck-art{font-size:17px}.deck-art div{padding:12px 3px}.deck-art small{font-size:7px}.deck-feature p{font-size:14px}}</style>
+:root{font-family:Poppins,Georgia,sans-serif;color:#30463e;background:#faf6ed}h1,h2,h3{font-weight:300;letter-spacing:-.045em}h1{font-size:clamp(38px,4.9vw,78px);white-space:normal}.hero{background:radial-gradient(ellipse at 15% 10%,#fffefb,transparent 65%),linear-gradient(115deg,#fbf8ef,#eee5d6)}.optics::before{content:'';position:absolute;inset:7% 42% 8% 4%;border:1px solid #b79c6844;border-radius:48% 48% 0 0;box-shadow:inset 0 0 0 7px #fff7,inset 0 0 0 8px #b79c6828;pointer-events:none}.ray{font-family:Poppins,sans-serif;background:transparent;box-shadow:none;backdrop-filter:none;border-radius:0;min-height:48px;max-width:45%;white-space:normal;padding:8px 3px;text-align:left;color:#30463e;gap:7px}.ray strong{font-weight:500;font-size:clamp(10px,1vw,15px);display:block}.ray small{display:block;font-size:10px;color:#746451}.ray:hover,.ray:focus-visible{background:#fff7}.ray i{flex:none}.ray span{margin-left:3px}.deck-feature{padding:55px 9vw;display:grid;grid-template-columns:minmax(130px,230px) 1fr;gap:7vw;align-items:center;background:#f8f3e9}.deck-feature h2{font-size:clamp(30px,4vw,56px);margin:12px 0}.deck-art{aspect-ratio:2/3;background:#244b40;border:8px double #b99b62;color:#e5c788;display:grid;place-items:center;text-align:center;box-shadow:8px 12px 26px #4b3c2925;border-radius:7px;font-family:Georgia,serif;font-size:30px;transform:rotate(-4deg)}.deck-art div{border:1px solid #b99b62;padding:25px 12px;border-radius:48% 48% 0 0}.deck-art small{font-size:10px;letter-spacing:2px}textarea{width:100%;font:inherit;background:#fffdf8;border:1px solid #b9a489;padding:12px}.story-action{border:0}.story-action.secondary{border:1px solid #695542}canvas{touch-action:pan-y}.copy{pointer-events:auto}nav strong{font-size:clamp(17px,2vw,27px)}@media(max-width:720px){.hero .optics{height:365px}.ray strong{font-size:11px}.ray small{font-size:9px}.deck-feature{padding:35px 6vw;grid-template-columns:105px 1fr;gap:20px}.deck-art{font-size:17px}.deck-art div{padding:12px 3px}.deck-art small{font-size:7px}.deck-feature p{font-size:14px}}
+/* Light-led navigation: fixed layout, matching hue, no flashing. */
+.ray{position:absolute;isolation:isolate;transition:background .4s ease,box-shadow .4s ease,color .4s ease;}
+.ray::before{content:'';position:absolute;inset:3px -5px;z-index:-1;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--tone) 19%,transparent),transparent);opacity:0;transition:opacity .4s ease;}
+.ray.illuminated::before,.ray:focus-visible::before{opacity:1;}
+.ray.illuminated strong{color:var(--tone);text-shadow:0 0 12px color-mix(in srgb,var(--tone) 23%,transparent);}
+.ray.illuminated i{box-shadow:0 0 0 4px color-mix(in srgb,var(--tone) 16%,transparent),0 0 17px var(--tone);}
+.ray.illuminated span{color:var(--tone);}
+@media(prefers-reduced-motion:reduce){.ray,.ray::before{transition:none!important;}}
+</style>
   </head>
   <body>
     <div id="app">
@@ -743,10 +752,13 @@ function draw() {
   const phase = yaw * 1.65 + pitch * .7;
   const hueShift = Math.sin(phase)*28;
   const hues=[274,42,338,204];
+  // Choose the same dominant wavelength for both light and navigation.
+  const dominant=active>=0?active:((Math.round(phase/(Math.PI/2))%4)+4)%4;
+  rays.forEach((b,i)=>b.classList.toggle('illuminated',i===dominant));
   pages.forEach((p,i)=>{
     const endX=w*.54,endY=h*(.23+i*.17);
     const wave=.5+.5*Math.cos(phase-i*Math.PI/2);
-    const power=active===i?.96:active>=0?.22:.38+wave*.42;
+    const power=active>=0?(active===i?.96:.22):(.26+wave*.61);
     const hue=hues[i]+hueShift;
     const bend=Math.sin(phase+i*.9)*h*.025;
     const color=(alpha,shift=0)=>'hsla('+ (hue+shift)+',76%,62%,'+alpha+')';
@@ -766,7 +778,7 @@ function draw() {
     }
     // Fixed endpoint identifies the navigation destination.
     ctx.filter='none';ctx.fillStyle=p.tone;
-    ctx.globalAlpha=active===i?.92:.45;
+    ctx.globalAlpha=dominant===i?.92:.45;
     path([{x:cx,y:cy},{x:endX,y:endY-1},{x:endX,y:endY+1}]);ctx.fill();ctx.globalAlpha=1;
   });
   ctx.restore();
@@ -829,7 +841,7 @@ function draw() {
   rays.forEach((b, i) => {
     b.style.left=(w*.54)+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
   });
-  if(!paused&&!drag&&!home.hidden)yaw+=(targetYaw+Math.sin(performance.now()/4200)*.38-yaw)*.035;
+  if(!paused&&!drag&&!home.hidden)yaw+=(targetYaw+Math.sin(performance.now()/6500)*1.15-yaw)*.035;
   requestAnimationFrame(draw);
 }
 canvas.addEventListener('pointerdown', e => {
@@ -841,7 +853,7 @@ canvas.addEventListener('pointerdown', e => {
   canvas.setPointerCapture(e.pointerId);
 });
 canvas.addEventListener('pointermove', e => {
-  if (!drag) {if(!paused){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/r.width*1.2;}return;}
+  if (!drag) {if(!paused){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/r.width*3.8;}return;}
   const dx = e.clientX - lastX,
     dy = e.clientY - lastY;
   yaw += dx * 0.013;
