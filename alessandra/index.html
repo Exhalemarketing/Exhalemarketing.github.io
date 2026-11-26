@@ -555,6 +555,8 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
 
 /* Explicit interaction stacking: canvas receives movement, labels remain above it. */
 .optics{z-index:2}.optics canvas{z-index:1;inset:0;pointer-events:auto;touch-action:pan-y}.optics .orbit{z-index:2;pointer-events:none}.optics .ray{pointer-events:auto}.optics #pause{z-index:3}.optics .caption{z-index:3;pointer-events:none}.optics canvas:focus-visible{outline:2px solid #a88b56;outline-offset:-4px}
+
+.optics{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}.optics canvas{touch-action:none;pointer-events:auto;cursor:grab}.optics.turning,.optics.turning canvas{cursor:grabbing}.optics .ray,.optics #pause{touch-action:manipulation;cursor:pointer}
 </style>
   </head>
   <body>
@@ -571,7 +573,7 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
             <h1>Many expressions.<br /><em>One essence.</em></h1>
             <p class="philosophy">Exploring what is. Revealing what could be.</p><p class="grounding">What a curious thing it is to be human. The pleasure, the pain, the mysteries of existence and our obsession with what comes next. Come explore with me through books, art, workshops and storytelling.</p>
             <div class="instruction">
-              <span>↔</span> Move across the crystal<br /><small
+              <span>↔</span> Click and drag the crystal<br /><small
                 >Follow a coloured ray</small
               >
             </div>
@@ -760,7 +762,7 @@ function draw() {
   const dominant=Math.round(index)%4;
   const moved=Math.abs(yaw-previousYaw)+Math.abs(pitch-previousPitch);
   previousYaw=yaw;previousPitch=pitch;
-  const desired=(moved>.0009&&(!paused||performance.now()<manualMotionUntil))?1:0;
+  const desired=(drag||moved>.0009)?1:0;
   lightAmount+=(desired-lightAmount)*(desired?.22:.16);
   const lit=lightAmount>.025;
   const color=(i,alpha)=>'hsla('+hues[i]+',78%,51%,'+alpha+')';
@@ -777,9 +779,9 @@ function draw() {
     white.addColorStop(1,'rgba(255,255,255,'+(.92*lightAmount)+')');
     beam(source,entry,5,2.5,white,1.6);
     const labelX=w*(mobile?.56:.62);
-    const end={x:labelX-15,y:h*(.23+dominant*.17)};
+    const end={x:labelX-8,y:h*(.23+dominant*.17)};
     // Hard clipping boundary protects the entire label column.
-    ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,labelX-9),h);ctx.clip();
+    ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,labelX-5),h);ctx.clip();
     if(end.x>exit.x+2){
       const g=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
       g.addColorStop(0,color(dominant,.88*lightAmount));g.addColorStop(.8,color(dominant,.69*lightAmount));g.addColorStop(1,color(dominant,.12*lightAmount));
@@ -853,45 +855,51 @@ function draw() {
   if(!drag&&!home.hidden&&(!paused||performance.now()<manualMotionUntil)){ yaw+=(targetYaw-yaw)*.10; }
   requestAnimationFrame(draw);
 }
-canvas.addEventListener('pointerdown', e => {
-  manualMotionUntil=performance.now()+650;
-  lastInteraction=performance.now();
-  drag = true;
-  travel = 0;
-  lastX = e.clientX;
-  lastY = e.clientY;
-  try {canvas.setPointerCapture(e.pointerId);} catch (_) {}
-});
-canvas.addEventListener('pointermove', e => {
-  lastInteraction=performance.now();
-  if (!drag) {if(!paused&&e.pointerType!=='touch'){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/Math.max(r.width,1)*6.28;}return;}
-  manualMotionUntil=performance.now()+220;
-  const dx = e.clientX - lastX,
-    dy = e.clientY - lastY;
-  yaw += dx * 0.013;
-  pitch = Math.max(-0.65, Math.min(0.65, pitch + dy * 0.008));
-  travel += Math.abs(dx) + Math.abs(dy);
-  lastX = e.clientX;
-  lastY = e.clientY;
-});
-canvas.addEventListener('pointerup', e => {
-  if (!drag) return;
-  drag = false;
-  targetYaw=yaw;lastInteraction=performance.now();
-  if (travel > 8) return;
-  const r = canvas.getBoundingClientRect(),
-    x = e.clientX - r.left,
-    y = e.clientY - r.top,
-    d = Math.min(devicePixelRatio || 1, 2);
-  for (const f of [...faces].reverse()) {
-    path(f.p);
-    if (ctx.isPointInPath(x * d, y * d)) {
-      openWorld(f.i);
-      break;
+// Direct drag works even with ambient animation paused.
+const optics=canvas.closest('.optics');
+let capturedId=null,dragStartYaw=0,dragStartPitch=0,dragOriginX=0,dragOriginY=0;
+function beginTurn(e){
+  if(e.button!==0&&e.pointerType==='mouse')return;
+  if(e.target.closest('button'))return;
+  e.preventDefault();
+  capturedId=e.pointerId;drag=true;travel=0;
+  dragOriginX=e.clientX;dragOriginY=e.clientY;
+  dragStartYaw=yaw;dragStartPitch=pitch;
+  optics.classList.add('turning');
+  try{optics.setPointerCapture(e.pointerId)}catch(_){}
+}
+function moveTurn(e){
+  if(!drag||e.pointerId!==capturedId)return;
+  e.preventDefault();
+  const dx=e.clientX-dragOriginX,dy=e.clientY-dragOriginY;
+  yaw=dragStartYaw+dx*.022;
+  pitch=Math.max(-.75,Math.min(.75,dragStartPitch+dy*.012));
+  targetYaw=yaw;travel=Math.max(travel,Math.hypot(dx,dy));
+  manualMotionUntil=performance.now()+300;
+}
+function endTurn(e){
+  if(!drag||e.pointerId!==capturedId)return;
+  const clicked=travel<6&&e.type==='pointerup';
+  drag=false;targetYaw=yaw;capturedId=null;
+  optics.classList.remove('turning');
+  if(clicked){
+    const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
+    for(const f of [...faces].reverse()){
+      path(f.p);
+      if(ctx.isPointInPath((e.clientX-r.left)*d,(e.clientY-r.top)*d)){openWorld(f.i);break;}
     }
   }
+}
+optics.addEventListener('pointerdown',beginTurn,true);
+window.addEventListener('pointermove',moveTurn,{passive:false});
+window.addEventListener('pointerup',endTurn);
+window.addEventListener('pointercancel',endTurn);
+optics.addEventListener('lostpointercapture',endTurn);
+optics.addEventListener('pointermove',e=>{
+  if(drag||paused||e.pointerType==='touch'||e.target.closest('button'))return;
+  const r=canvas.getBoundingClientRect();
+  targetYaw=.45+(e.clientX-r.left-r.width*.5)/Math.max(r.width,1)*6.28;
 });
-canvas.addEventListener('pointercancel', () => (drag = false));
 window.addEventListener('scroll',()=>{if(!paused)targetYaw=.45+Math.min(window.scrollY/1500,.5);},{passive:true});
 canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();manualMotionUntil=performance.now()+450;targetYaw+=e.key==='ArrowRight'?.87:-.87;});
 route();
