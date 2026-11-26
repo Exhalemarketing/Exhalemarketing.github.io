@@ -50,3 +50,18 @@ html,body{margin:0!important;padding:0!important;max-width:none!important}
 body #app{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
 body header.prism-header,body #home-view>.hero,body #world-page .world-hero,body #storykeeper.story-section,body .connect-hero,body main#main>.intro,body #app>main>.intro{box-sizing:border-box;width:100vw!important;max-width:none!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important}
 body{overflow-x:clip}
+
+/* Living gallery: independent CSS hover effects, no JavaScript required. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  body .living-art .original-etching{transition:scale .5s cubic-bezier(.2,.65,.3,1),filter .5s ease}
+  body .living-art:hover .original-etching{scale:1.035;filter:sepia(.28) drop-shadow(0 0 7px #D6B78255)!important}
+  body .connect-art #connect-moon{transition:scale .5s ease,transform .12s ease-out,filter .5s ease}
+  body .connect-art:hover #connect-moon{scale:1.035;filter:sepia(.55) drop-shadow(0 0 9px #D6B78266)!important}
+  body .contact-portrait img,body .about-portrait img,body .book-cover-image{transition:scale .45s ease,filter .45s ease,box-shadow .45s ease}
+  body .contact-portrait:hover img,body .about-portrait:hover img,body .book-cover-link:hover .book-cover-image{scale:1.025;filter:brightness(1.045) saturate(1.06);box-shadow:0 14px 36px #12334e26}
+  body .photo .photo-frame img{transition:transform .5s cubic-bezier(.2,.65,.3,1),filter .4s ease}
+  body .photo:hover .photo-frame img,body .photo:focus-visible .photo-frame img{transform:scale(1.06);filter:brightness(1.06) saturate(1.08)}
+  body .photo .photo-frame{position:relative}
+  body .photo .photo-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#fff2c929 46%,transparent 72%);opacity:0;transition:opacity .45s ease}
+  body .photo:hover .photo-frame::after{opacity:1}
+}
