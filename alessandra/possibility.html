@@ -396,6 +396,15 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
 .patronage p{font-size:16px;line-height:1.65;color:#344B5C;margin:0 auto 12px;max-width:470px}
 .patronage-pending{font-size:14px;color:#735269}
 .physical{margin-top:32px}
+
+/* Match the approved sapphire-and-gold patronage concept. */
+#patronage.patronage{width:min(570px,90vw);box-sizing:border-box;margin:18px auto 8px;padding:clamp(30px,5vw,48px) clamp(22px,5vw,44px);background:#12334E;color:#F8F3F2;border:0;border-radius:18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+#patronage svg{color:#D6B782;width:100px;height:40px;margin:0}
+#patronage h2{font-size:clamp(29px,4vw,36px);font-weight:600;line-height:1.15;letter-spacing:-.5px;color:#F4DEC0;margin:0}
+#patronage p{font-size:17px;line-height:1.7;color:#F8F3F2;max-width:440px;margin:0}
+#patronage .patronage-cta{background:transparent;border:1px solid #D6B782;color:#F4DEC0;border-radius:7px;padding:13px 22px;font-size:16px;font-weight:500;min-height:48px;opacity:1;cursor:default}
+#patronage .patronage-pending{font-size:12px;color:#D6B782;margin-top:-10px;letter-spacing:.5px}
+@media(max-width:480px){#patronage.patronage{padding:30px 22px;gap:16px}#patronage p{font-size:16px}}
 </style>
   </head>
   <body>
@@ -438,10 +447,11 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
           </div>
           <p id="status" role="status"></p>
           <aside id="patronage" class="patronage" aria-labelledby="patronage-title">
-            <svg viewBox="0 0 120 48" width="76" height="31" aria-hidden="true"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M5 24 Q30 0 60 24 Q90 48 115 24 M5 24 Q30 48 60 24 Q90 0 115 24"/><path d="M60 9 L65 20 L76 24 L65 28 L60 39 L55 28 L44 24 L55 20Z" fill="currentColor"/></g></svg>
+            <svg viewBox="0 0 120 48" width="100" height="40" aria-hidden="true"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M5 24 Q30 0 60 24 Q90 48 115 24 M5 24 Q30 48 60 24 Q90 0 115 24"/><path d="M60 9 L65 20 L76 24 L65 28 L60 39 L55 28 L44 24 L55 20Z" fill="currentColor"/></g></svg>
             <h2 id="patronage-title">A Little Patronage</h2>
-            <p>If these little moments bring something beautiful to your day and you’d like to encourage more of them, your patronage is always welcome.</p>
-            <span id="patronage-pending" class="patronage-pending">Support my creations · coming soon</span>
+            <p>If you've enjoyed wandering through my world and would like to encourage a little more creation, your patronage is always welcome.</p>
+            <button type="button" class="patronage-cta" disabled aria-describedby="patronage-pending">Support my creations</button>
+            <small id="patronage-pending" class="patronage-pending">Coming soon</small>
           </aside>
         </section>
         <section id="saved" hidden>
