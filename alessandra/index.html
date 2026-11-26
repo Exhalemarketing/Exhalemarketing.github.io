@@ -802,7 +802,9 @@ button:disabled,[aria-disabled="true"]{cursor:not-allowed}
 <script src="./book-cover.js?v=1"></script>
 <script src="./portrait.js?v=1"></script>
 <script src="./intaglio-emblem.js?v=1"></script>
-<link rel="stylesheet" href="./prism-shell.css?v=3"></head>
+<link rel="stylesheet" href="./prism-shell.css?v=3"><style>/* Restore the original expansive homepage without changing interior layouts. */
+main:has(> #home-view:not([hidden])){max-width:1800px}
+</style></head>
   <body>
     <div id="app">
       <header class="prism-header"><details class="prism-menu"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</summary><div class="prism-links"><a href="./">Home</a><a href="./#explore">Consciousness &amp; intuition</a><a href="./#become">Transformation &amp; Death</a><a href="./#storykeeper">Stories &amp; memories</a><a href="./#create">Literature &amp; art</a><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a><a class="card-link" href="./possibility.html">Take a moment · Pick a card</a></div></details><a class="wordmark" href="./">Alessandra <span>Sagredo</span></a><div class="prism-utility"><a href="./connect.html">Connect</a></div></header>
