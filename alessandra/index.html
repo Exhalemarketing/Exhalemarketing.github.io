@@ -950,7 +950,7 @@ function pauseLabel() {
 }
 pauseLabel();
 const cueText=document.querySelector('#crystal-cue small');
-if(matchMedia('(pointer: coarse)').matches)cueText.textContent='Touch and drag to reveal light';
+if(cueText&&matchMedia('(pointer: coarse)').matches)cueText.textContent='Touch and drag to reveal light';
 pause.onclick = () => {
   paused = !paused;
   pauseLabel();
@@ -1066,7 +1066,7 @@ function draw() {
   const dominant=Math.round(index)%4;
   const moved=Math.abs(yaw-previousYaw)+Math.abs(pitch-previousPitch);
   previousYaw=yaw;previousPitch=pitch;
-  const desired=(drag||moved>.0009||(!paused&&performance.now()-lastInteraction<500&&optics.classList.contains('has-turned')))?1:0;
+  const desired=(drag||moved>.0009||(!paused&&performance.now()-lastInteraction<1400&&optics.classList.contains('has-turned')))?1:0;
   lightAmount+=(desired-lightAmount)*(desired?.22:.16);
   const lit=lightAmount>.025;
   const color=(i,alpha)=>'hsla('+hues[i]+',78%,51%,'+alpha+')';
@@ -1217,14 +1217,14 @@ window.addEventListener('pointerup',endTurn);
 window.addEventListener('pointercancel',endTurn);
 optics.addEventListener('lostpointercapture',endTurn);
 const hero=optics.closest('.hero');
-hero.addEventListener('pointermove',e=>{
-  if(drag||paused||e.pointerType==='touch')return;
+hero.addEventListener('mousemove',e=>{
+  if(drag||paused)return;
   const r=hero.getBoundingClientRect();
   const x=Math.max(0,Math.min(1,(e.clientX-r.left)/Math.max(r.width,1)));
   const y=Math.max(0,Math.min(1,(e.clientY-r.top)/Math.max(r.height,1)));
-  targetYaw=.45+(x-.5)*6.28;
+  targetYaw=.45+(x-.5)*8.0;
   targetPitch=.12+(y-.5)*.75;
-  lastInteraction=performance.now();
+  lastInteraction=performance.now();lightAmount=Math.max(lightAmount,.35);
   optics.classList.add('has-turned');
 },{passive:true});
 
