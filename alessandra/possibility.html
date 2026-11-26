@@ -437,11 +437,11 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
             <button id="share-app" class="quiet">Share this experience</button>
           </div>
           <p id="status" role="status"></p>
-          <aside id="patronage" class="patronage" aria-labelledby="patronage-title" hidden>
+          <aside id="patronage" class="patronage" aria-labelledby="patronage-title">
             <svg viewBox="0 0 120 48" width="76" height="31" aria-hidden="true"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M5 24 Q30 0 60 24 Q90 48 115 24 M5 24 Q30 48 60 24 Q90 0 115 24"/><path d="M60 9 L65 20 L76 24 L65 28 L60 39 L55 28 L44 24 L55 20Z" fill="currentColor"/></g></svg>
             <h2 id="patronage-title">A Little Patronage</h2>
             <p>If these little moments bring something beautiful to your day and you’d like to encourage more of them, your patronage is always welcome.</p>
-            <span id="patronage-pending" class="patronage-pending">Patronage will be available soon.</span>
+            <span id="patronage-pending" class="patronage-pending">Support my creations · coming soon</span>
           </aside>
         </section>
         <section id="saved" hidden>
@@ -1144,7 +1144,6 @@ function show(i) {
   $('deck').hidden = true;
   $('face').hidden = false;
   $('extras').hidden = false;
-  $('patronage').hidden = false;
   $('card-title').textContent = cards[i][0];
   $('category').textContent = cards[i][1].toUpperCase();
   $('reflection').textContent = cards[i][2];
@@ -1285,7 +1284,6 @@ $('home').onclick = e => {
   $('deck').hidden = false;
   $('face').hidden = true;
   $('extras').hidden = true;
-  $('patronage').hidden = true;
   $('draw').textContent = 'Explore another moment';
   $('status').textContent = '';
   history.replaceState(null, '', location.pathname + location.search);
