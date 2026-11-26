@@ -816,7 +816,7 @@ main:has(> #home-view:not([hidden])){max-width:1800px}
             <h1>Discover the extraordinary <em>in being human.</em></h1>
             <p class="philosophy">Exploring what is. Revealing what could be.</p><p class="grounding">Indulge your curiosity. Explore the mysteries of existence, the exquisite pleasure of being alive and the delicious uncertainty of what comes next.</p>
             <div class="instruction">
-              <span>↔</span> Turn the crystal. See what it reveals.<br /><small
+              <span>↔</span> Move your cursor. See what it reveals.<br /><small
                 >Choose any colour to explore</small
               >
             </div>
@@ -827,7 +827,7 @@ main:has(> #home-view:not([hidden])){max-width:1800px}
               aria-label="Interactive crystal. Move your pointer, drag, or use the left and right arrow keys to turn it."
             ></canvas>
             <div class="orbit" id="orbit"></div>
-            <div class="crystal-cue" id="crystal-cue" aria-hidden="true"><svg viewBox="0 0 104 24" width="104" height="24" fill="none"><path d="M8 12C22 1 82 1 96 12M8 12l10-1M8 12l4-8M96 12l-10-1M96 12l-4-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 17Q52 23 67 17" stroke="currentColor" stroke-width=".8" opacity=".45"/></svg><strong>Turn the crystal</strong><small>Drag to reveal the light</small></div>
+            <div class="crystal-cue" id="crystal-cue" aria-hidden="true"><svg viewBox="0 0 104 24" width="104" height="24" fill="none"><path d="M8 12C22 1 82 1 96 12M8 12l10-1M8 12l4-8M96 12l-10-1M96 12l-4-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 17Q52 23 67 17" stroke="currentColor" stroke-width=".8" opacity=".45"/></svg><strong>Turn the crystal</strong><small>Move your cursor to reveal the light</small></div>
             <button id="pause" aria-label="Pause rotation">Ⅱ</button>
           </div>
         </section>
@@ -932,7 +932,7 @@ pages.forEach((p,i)=>{
 const canvas = document.querySelector('#crystal'),
   ctx = canvas.getContext('2d'),
   rays = [...orbit.children];
-let active=-1, targetYaw=.45, lastInteraction=performance.now(), previousYaw=.45, previousPitch=.12, lightAmount=0, manualMotionUntil=0;let yaw = 0.45,
+let active=-1, targetPitch=.12, targetYaw=.45, lastInteraction=performance.now(), previousYaw=.45, previousPitch=.12, lightAmount=0, manualMotionUntil=0;let yaw = 0.45,
   pitch = 0.12,
   paused = matchMedia('(prefers-reduced-motion: reduce)').matches,
   drag = false,
@@ -1066,7 +1066,7 @@ function draw() {
   const dominant=Math.round(index)%4;
   const moved=Math.abs(yaw-previousYaw)+Math.abs(pitch-previousPitch);
   previousYaw=yaw;previousPitch=pitch;
-  const desired=(drag||moved>.0009)?1:0;
+  const desired=(drag||moved>.0009||(!paused&&performance.now()-lastInteraction<500&&optics.classList.contains('has-turned')))?1:0;
   lightAmount+=(desired-lightAmount)*(desired?.22:.16);
   const lit=lightAmount>.025;
   const color=(i,alpha)=>'hsla('+hues[i]+',78%,51%,'+alpha+')';
@@ -1173,7 +1173,7 @@ function draw() {
   rays.forEach((b, i) => {
     b.style.left=(w*(mobile?.56:.62))+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
   });
-  if(!drag&&!home.hidden&&(!paused||performance.now()<manualMotionUntil)){ yaw+=(targetYaw-yaw)*.10; }
+  if(!drag&&!home.hidden&&(!paused||performance.now()<manualMotionUntil)){ yaw+=(targetYaw-yaw)*.10; pitch+=(targetPitch-pitch)*.09; }
   requestAnimationFrame(draw);
 }
 // Direct drag works even with ambient animation paused.
@@ -1201,7 +1201,7 @@ function moveTurn(e){
 function endTurn(e){
   if(!drag||e.pointerId!==capturedId)return;
   const clicked=travel<6&&e.type==='pointerup';
-  drag=false;targetYaw=yaw;capturedId=null;
+  drag=false;targetYaw=yaw;targetPitch=pitch;capturedId=null;
   optics.classList.remove('turning');
   if(clicked){
     const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
@@ -1216,12 +1216,18 @@ window.addEventListener('pointermove',moveTurn,{passive:false});
 window.addEventListener('pointerup',endTurn);
 window.addEventListener('pointercancel',endTurn);
 optics.addEventListener('lostpointercapture',endTurn);
-optics.addEventListener('pointermove',e=>{
-  if(drag||paused||e.pointerType==='touch'||e.target.closest('button'))return;
-  const r=canvas.getBoundingClientRect();
-  targetYaw=.45+(e.clientX-r.left-r.width*.5)/Math.max(r.width,1)*6.28;
-});
-window.addEventListener('scroll',()=>{if(!paused)targetYaw=.45+Math.min(window.scrollY/1500,.5);},{passive:true});
+const hero=optics.closest('.hero');
+hero.addEventListener('pointermove',e=>{
+  if(drag||paused||e.pointerType==='touch')return;
+  const r=hero.getBoundingClientRect();
+  const x=Math.max(0,Math.min(1,(e.clientX-r.left)/Math.max(r.width,1)));
+  const y=Math.max(0,Math.min(1,(e.clientY-r.top)/Math.max(r.height,1)));
+  targetYaw=.45+(x-.5)*6.28;
+  targetPitch=.12+(y-.5)*.75;
+  lastInteraction=performance.now();
+  optics.classList.add('has-turned');
+},{passive:true});
+
 canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();manualMotionUntil=performance.now()+450;targetYaw+=e.key==='ArrowRight'?.87:-.87;});
 document.querySelectorAll('.workshop-notify').forEach(form=>form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const email=form.elements.email.value.trim();const subject='Stories Worth Keeping | January 2027 notification request';const body='Please notify me when registration opens for the free online Stories Worth Keeping workshop in January 2027.\n\nEmail: '+email;form.querySelector('.notify-status').textContent='Send the prepared email to complete your request.';location.href='mailto:alessandra@soulphoria.ca?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body); }));
 route();
