@@ -545,7 +545,7 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
 .ray.illuminated i{box-shadow:0 0 0 4px color-mix(in srgb,var(--tone) 16%,transparent),0 0 17px var(--tone);}
 .ray.illuminated span{color:var(--tone);}
 @media(prefers-reduced-motion:reduce){.ray,.ray::before{transition:none!important;}}
-</style>
+.ray{max-width:37%;min-width:0}.ray div{min-width:0}.ray strong{overflow-wrap:normal}.optics::before{inset:7% 34% 8% 10%}@media(max-width:720px){.ray{max-width:43%}.optics::before{inset:7% 42% 8% 4%}} </style>
   </head>
   <body>
     <div id="app">
@@ -716,9 +716,9 @@ function draw() {
   ctx.setTransform(d, 0, 0, d, 0, 0);
   ctx.clearRect(0, 0, w, h);
   const mobile = w < 520,
-    cx = w * (mobile ? 0.24 : 0.30),
+    cx = w * (mobile ? 0.28 : 0.36),
     cy = h * 0.48,
-    s = Math.min(w * 0.22, h * 0.23);
+    s = Math.min(w * (mobile?.19:.21), h * 0.23);
   const glow = ctx.createRadialGradient(
     w * 0.15,
     h * 0.12,
@@ -766,7 +766,7 @@ function draw() {
   // Strong, continuous coloured rays extend past the labels onto the wall.
   hues.forEach((_,i)=>{
     const power=weights[i],ey=h*(.23+i*.17);
-    const target={x:w*.54,y:ey},far={x:w*.99,y:ey+(ey-exit.y)*.8};
+    const target={x:w*(mobile?.56:.62),y:ey},far={x:w*.99,y:ey+(ey-exit.y)*.8};
     const g=ctx.createLinearGradient(exit.x,exit.y,far.x,far.y);
     g.addColorStop(0,color(i,.44+.48*power));g.addColorStop(.48,color(i,.20+.64*power));g.addColorStop(1,color(i,.04+.12*power));
     beam(exit,far,4,25+power*13,g,7);
@@ -852,7 +852,7 @@ function draw() {
     ctx.fillRect(p.x - 12, p.y - 12, 24, 24);
   }
   rays.forEach((b, i) => {
-    b.style.left=(w*.54)+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
+    b.style.left=(w*(mobile?.56:.62))+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
   });
   if(!paused&&!drag&&!home.hidden){ const now=performance.now(); if(now-lastInteraction>3000)targetYaw+=.004; yaw+=(targetYaw-yaw)*.045; }
   requestAnimationFrame(draw);
