@@ -41,3 +41,6 @@ header.prism-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax
 
 #home-view .path-intro{padding-top:clamp(40px,3.2vw,56px)}
 @media(max-width:720px){#home-view .path-intro{padding-top:32px}}
+
+/* Full-width header only; preserve all page content widths. */
+body header.prism-header{width:100%;max-width:none;margin-inline:0}
