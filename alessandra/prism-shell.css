@@ -1,5 +1,5 @@
 /* Prism shared shell: final overrides, independent of earlier page-specific experiments. */
-:root{--prism-width:1440px;--prism-gutter:clamp(20px,4.1667vw,60px);--prism-ink:#12334E;--prism-paper:#F8F3F2;--prism-accent:#A21E49;--prism-gold:#A87524}
+:root{--prism-width:1800px;--prism-gutter:clamp(20px,4.1667vw,60px);--prism-ink:#12334E;--prism-paper:#F8F3F2;--prism-accent:#A21E49;--prism-gold:#A87524}
 body{margin:0}
 #app{max-width:none;margin-inline:auto}
 main{width:100%;max-width:var(--prism-width);margin-inline:auto}
@@ -38,3 +38,6 @@ header.prism-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax
 .prism-header .prism-utility>a:hover{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:720px){header.prism-header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px}.prism-header .wordmark{font-size:clamp(15px,3.5vw,21px);white-space:normal;text-align:center}.prism-header .prism-menu summary{font-size:14px}.prism-header .prism-utility>a{font-size:13px}.prism-header #collection{font-size:13px;padding:7px 9px}}
 @media(max-width:420px){header.prism-header{padding:10px 16px;gap:8px;justify-content:normal}.prism-header .prism-menu summary{gap:5px}.prism-header .prism-menu summary svg{width:17px;height:17px}.prism-header .wordmark{padding:0}.prism-header .prism-utility{gap:5px}}
+
+/* Common outer page width; retain intentional readable text measures inside sections. */
+main{box-sizing:border-box;width:100%;max-width:var(--prism-width);margin-inline:auto}header.prism-header{max-width:var(--prism-width)}
