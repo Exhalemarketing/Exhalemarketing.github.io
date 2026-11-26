@@ -47,3 +47,10 @@ main{box-sizing:border-box;width:100%;max-width:var(--prism-width);margin-inline
 header.prism-header,main,main:has(> #home-view:not([hidden])),body>footer,#app>footer{width:var(--prism-page);max-width:var(--prism-width);margin-inline:auto;box-sizing:border-box}
 @media(max-width:1100px){:root{--prism-page:92%}}
 @media(max-width:720px){:root{--prism-page:100%}}
+
+/* Approved visual reference: desktop centered canvas, generous outer whitespace. */
+:root{--prism-page:75vw;--prism-width:1440px}
+body #app{width:100%;max-width:none}
+body header.prism-header,body main,body main:has(> #home-view:not([hidden])),body>footer,body #app>footer{width:min(var(--prism-page),var(--prism-width))!important;max-width:var(--prism-width)!important;margin-left:auto!important;margin-right:auto!important;box-sizing:border-box}
+@media(max-width:1100px){:root{--prism-page:92vw}}
+@media(max-width:720px){:root{--prism-page:100vw}}
