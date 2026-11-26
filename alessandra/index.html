@@ -644,7 +644,7 @@ document.querySelector('#menu').onclick=()=>{
 const canvas = document.querySelector('#crystal'),
   ctx = canvas.getContext('2d'),
   rays = [...orbit.children];
-let active=-1, targetYaw=.45;let yaw = 0.45,
+let active=-1, targetYaw=.45, lastInteraction=performance.now();let yaw = 0.45,
   pitch = 0.12,
   paused = matchMedia('(prefers-reduced-motion: reduce)').matches,
   drag = false,
@@ -743,56 +743,49 @@ function draw() {
     ctx.fill();
   }
   ctx.restore();
-  const angle = Math.sin(yaw) * 0.15,
-    ex = w * 1.12,
-    ey = cy + (ex - cx) * (0.12 + angle);
-  ctx.save();
-  ctx.globalCompositeOperation = 'multiply';
-  // Angle-dependent spectral dispersion; pathway colours remain stable.
-  const phase = yaw * 1.65 + pitch * .7;
-  const hueShift = Math.sin(phase)*28;
+  // One continuous optical path: incident white light, dispersion inside glass,
+  // then a visible moving spectrum beyond the exit face.
+  const phase=yaw*1.8+pitch*.7;
   const hues=[274,42,338,204];
-  // Choose the same dominant wavelength for both light and navigation.
-  const dominant=active>=0?active:((Math.round(phase/(Math.PI/2))%4)+4)%4;
+  const opticalIndex=((phase/(Math.PI/2))%4+4)%4;
+  const dominant=active>=0?active:Math.round(opticalIndex)%4;
+  const blend=(a,b,t)=>a+(b-a)*t;
+  const weights=hues.map((_,i)=>active>=0?(i===active?1:.10):Math.pow(.5+.5*Math.cos(phase-i*Math.PI/2),3));
+  const color=(i,alpha,offset=0)=>'hsla('+ (hues[i]+offset)+',90%,54%,'+alpha+')';
   rays.forEach((b,i)=>b.classList.toggle('illuminated',i===dominant));
-  pages.forEach((p,i)=>{
-    const endX=w*.54,endY=h*(.23+i*.17);
-    const wave=.5+.5*Math.cos(phase-i*Math.PI/2);
-    const power=active>=0?(active===i?.96:.22):(.26+wave*.61);
-    const hue=hues[i]+hueShift;
-    const bend=Math.sin(phase+i*.9)*h*.025;
-    const color=(alpha,shift=0)=>'hsla('+ (hue+shift)+',76%,62%,'+alpha+')';
-    // Diffuse caustic on the background, away from the text.
-    const spill=ctx.createRadialGradient(endX*.86,endY+bend,0,endX*.86,endY+bend,h*.22);
-    spill.addColorStop(0,color(power*.18));spill.addColorStop(1,color(0));
-    ctx.fillStyle=spill;ctx.filter='none';ctx.fillRect(0,0,w,h);
-    const g=ctx.createLinearGradient(cx,cy,endX,endY);
-    g.addColorStop(0,color(power*.08,-14));g.addColorStop(.48,color(power*.48,12));g.addColorStop(1,color(power));
-    ctx.fillStyle=g;ctx.filter='blur(5px)';
-    path([{x:cx,y:cy-3},{x:endX,y:endY-12},{x:endX,y:endY+12},{x:cx,y:cy+3}]);ctx.fill();
-    // Adjacent wavelength bands slide as the crystal turns.
-    ctx.filter='blur(1.6px)';
-    for(let k=-1;k<=1;k++){
-      ctx.fillStyle=color(power*.43,k*21);
-      path([{x:cx,y:cy+k},{x:endX,y:endY+bend+k*4-2},{x:endX,y:endY+bend+k*4+2}]);ctx.fill();
-    }
-    // Fixed endpoint identifies the navigation destination.
-    ctx.filter='none';ctx.fillStyle=p.tone;
-    ctx.globalAlpha=dominant===i?.92:.45;
-    path([{x:cx,y:cy},{x:endX,y:endY-1},{x:endX,y:endY+1}]);ctx.fill();ctx.globalAlpha=1;
+  const entry={x:cx-s*.85,y:cy-s*.18},exit={x:cx+s*.66,y:cy+s*.08};
+  const source={x:0,y:h*.06};
+  function beam(a,b,wa,wb,fill,blur=0){
+    ctx.save();ctx.filter=blur?'blur('+blur+'px)':'none';ctx.fillStyle=fill;
+    path([{x:a.x,y:a.y-wa},{x:b.x,y:b.y-wb},{x:b.x,y:b.y+wb},{x:a.x,y:a.y+wa}]);ctx.fill();ctx.restore();
+  }
+  const white=ctx.createLinearGradient(source.x,source.y,entry.x,entry.y);
+  white.addColorStop(0,'rgba(255,236,173,.52)');white.addColorStop(1,'rgba(255,255,255,.98)');
+  beam(source,entry,h*.045,8,white,9);
+  beam(source,entry,h*.018,3,'rgba(255,255,255,.86)',1);
+  // Strong, continuous coloured rays extend past the labels onto the wall.
+  hues.forEach((_,i)=>{
+    const power=weights[i],ey=h*(.23+i*.17);
+    const target={x:w*.54,y:ey},far={x:w*.99,y:ey+(ey-exit.y)*.8};
+    const g=ctx.createLinearGradient(exit.x,exit.y,far.x,far.y);
+    g.addColorStop(0,color(i,.44+.48*power));g.addColorStop(.48,color(i,.20+.64*power));g.addColorStop(1,color(i,.04+.12*power));
+    beam(exit,far,4,25+power*13,g,7);
+    beam(exit,target,2,7+power*5,color(i,.14+.73*power),1.5);
+    const spill=ctx.createRadialGradient(target.x,ey,0,target.x,ey,h*.24);
+    spill.addColorStop(0,color(i,.08+.24*power));spill.addColorStop(1,color(i,0));
+    ctx.fillStyle=spill;ctx.fillRect(0,0,w,h);
   });
-  ctx.restore();
-  ctx.save();
-  ctx.filter = 'blur(14px)';
-  ctx.fillStyle = '#fff9de98';
-  path([
-    { x: 0, y: 0 },
-    { x: cx, y: cy - 10 },
-    { x: cx, y: cy + 10 },
-    { x: 0, y: h * 0.1 },
-  ]);
-  ctx.fill();
-  ctx.restore();
+  // The free spectral fan actually changes hue with the turning angle.
+  const fanAngle=Math.sin(phase)*h*.15;
+  for(let k=0;k<7;k++){
+    const hue=((phase*57+k*32)%360+360)%360;
+    const dest={x:w*.92,y:cy+fanAngle+(k-3)*h*.034};
+    const g=ctx.createLinearGradient(exit.x,exit.y,dest.x,dest.y);
+    g.addColorStop(0,'hsla('+hue+',96%,55%,.75)');
+    g.addColorStop(.5,'hsla('+hue+',94%,58%,.48)');
+    g.addColorStop(1,'hsla('+hue+',92%,63%,.04)');
+    beam(exit,dest,1.5,9,g,2.5);
+  }
   ctx.strokeStyle = '#9d958873';
   ctx.lineWidth = 0.65;
   ctx.beginPath();
@@ -818,7 +811,7 @@ function draw() {
     const g = ctx.createLinearGradient(q[0].x, q[0].y, q[2].x, q[2].y);
     g.addColorStop(0, '#fffffff0');
     g.addColorStop(0.23, '#bdcdd458');
-    g.addColorStop(0.44, 'hsla('+ (hues[f.i]+hueShift)+',70%,65%,'+(.12+.20*(.5+.5*Math.cos(phase-f.i*Math.PI/2)))+')');
+    g.addColorStop(0.44, color(f.i,.13+.28*weights[f.i]));
     g.addColorStop(0.65, '#fefefb10');
     g.addColorStop(0.86, '#8298aa48');
     g.addColorStop(1, '#ffffffd9');
@@ -828,6 +821,26 @@ function draw() {
     ctx.lineWidth = f.z > 0 ? 1.35 : 0.7;
     ctx.stroke();
   }
+  // Render transmitted light AFTER the glass faces, clipped to its silhouette.
+  // This prevents the opaque highlight layers from hiding the actual refraction.
+  ctx.save();
+  const hull=points.slice().sort((a,b)=>a.x-b.x||a.y-b.y);
+  const cross=(o,a,b)=>(a.x-o.x)*(b.y-o.y)-(a.y-o.y)*(b.x-o.x);
+  const lower=[],upper=[];
+  for(const p of hull){while(lower.length>=2&&cross(lower[lower.length-2],lower[lower.length-1],p)<=0)lower.pop();lower.push(p);}
+  for(const p of hull.slice().reverse()){while(upper.length>=2&&cross(upper[upper.length-2],upper[upper.length-1],p)<=0)upper.pop();upper.push(p);}
+  path(lower.slice(0,-1).concat(upper.slice(0,-1)));ctx.clip();
+  const inner={x:cx-s*.12,y:cy-s*.04};
+  beam(entry,inner,7,4,'rgba(255,255,255,.95)',1.5);
+  for(let k=0;k<7;k++){
+    const hue=((phase*57+k*32)%360+360)%360;
+    const to={x:exit.x+s*.38,y:exit.y+(k-3)*s*.10};
+    beam(inner,to,1.5,4,'hsla('+hue+',96%,54%,.68)',1.2);
+  }
+  const sparkle=ctx.createRadialGradient(inner.x,inner.y,0,inner.x,inner.y,s*.34);
+  sparkle.addColorStop(0,'rgba(255,255,255,.95)');sparkle.addColorStop(.18,'rgba(255,255,255,.55)');sparkle.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=sparkle;ctx.fillRect(0,0,w,h);
+  ctx.restore();
   for (let i = 2; i < 6; i++) {
     const p = points[i];
     if (p.z < 0) continue;
@@ -841,11 +854,12 @@ function draw() {
   rays.forEach((b, i) => {
     b.style.left=(w*.54)+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
   });
-  if(!paused&&!drag&&!home.hidden)yaw+=(targetYaw+Math.sin(performance.now()/6500)*1.15-yaw)*.035;
+  if(!paused&&!drag&&!home.hidden){ const now=performance.now(); if(now-lastInteraction>3000)targetYaw+=.004; yaw+=(targetYaw-yaw)*.045; }
   requestAnimationFrame(draw);
 }
 canvas.addEventListener('pointerdown', e => {
   if (paused) return;
+  lastInteraction=performance.now();
   drag = true;
   travel = 0;
   lastX = e.clientX;
@@ -853,7 +867,8 @@ canvas.addEventListener('pointerdown', e => {
   canvas.setPointerCapture(e.pointerId);
 });
 canvas.addEventListener('pointermove', e => {
-  if (!drag) {if(!paused){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/r.width*3.8;}return;}
+  lastInteraction=performance.now();
+  if (!drag) {if(!paused){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/r.width*6.28;}return;}
   const dx = e.clientX - lastX,
     dy = e.clientY - lastY;
   yaw += dx * 0.013;
@@ -865,6 +880,7 @@ canvas.addEventListener('pointermove', e => {
 canvas.addEventListener('pointerup', e => {
   if (!drag) return;
   drag = false;
+  targetYaw=yaw;lastInteraction=performance.now();
   if (travel > 8) return;
   const r = canvas.getBoundingClientRect(),
     x = e.clientX - r.left,
