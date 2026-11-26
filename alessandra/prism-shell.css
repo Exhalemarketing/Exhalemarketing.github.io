@@ -56,6 +56,5 @@ body header.prism-header,body main,body main:has(> #home-view:not([hidden])),bod
 @media(max-width:720px){:root{--prism-page:100vw}}
 
 /* User-approved refinement: reduce desktop canvas by five percent, add breathing room after hero. */
-@media(min-width:1101px){:root{--prism-page:71.25vw;--prism-width:1368px}}
 #home-view .path-intro{padding-top:clamp(40px,3.2vw,56px)}
 @media(max-width:720px){#home-view .path-intro{padding-top:32px}}
