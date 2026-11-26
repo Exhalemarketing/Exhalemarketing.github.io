@@ -388,6 +388,14 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
 .physical-copy h2{font-size:clamp(27px,3.8vw,44px);line-height:1.15;font-weight:600;margin:12px 0 20px}.physical-copy p{font-size:17px;line-height:1.65;color:#f3e4e8}.physical-copy .eyebrow{color:#e8c999;font-size:13px}.physical-copy .edition-status{font-size:15px;color:#e8c999}.physical-copy button{font-size:16px;padding:14px 20px}
 .physical-art{display:flex;justify-content:center;padding:12px 10px 20px}.physical-box{width:min(210px,100%);min-height:300px;padding:22px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;background:radial-gradient(ellipse at 50% 20%,#315A89,#0b233a 75%);border:1px solid #cba777;outline:1px solid #cba77766;outline-offset:-8px;color:#f2d1a0;border-radius:8px;box-shadow:9px 8px #9b254d,16px 15px #081d31,0 20px 35px #0005}.physical-box img{height:95px;width:auto;object-fit:contain}.physical-box span{font-size:12px;letter-spacing:.2em}.physical-box strong{font:26px/1.1 Georgia,serif}.physical-box small{font-size:11px;letter-spacing:.12em}
 @media(max-width:620px){.physical{grid-template-columns:1fr;text-align:center}.physical-copy button{width:100%}}
+
+/* Patronage follows the experience; the physical product remains a separate offer. */
+.patronage{width:min(570px,90vw);text-align:center;padding:26px 20px 12px;margin:8px auto 0;border-top:1px solid #B88F9B66;color:#815366}
+.patronage svg{color:#A08357;display:block;margin:0 auto 10px}
+.patronage h2{font-size:23px;font-weight:500;color:#12334E;margin:0 0 10px}
+.patronage p{font-size:16px;line-height:1.65;color:#344B5C;margin:0 auto 12px;max-width:470px}
+.patronage-pending{font-size:14px;color:#735269}
+.physical{margin-top:32px}
 </style>
   </head>
   <body>
@@ -429,6 +437,12 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
             <button id="share-app" class="quiet">Share this experience</button>
           </div>
           <p id="status" role="status"></p>
+          <aside id="patronage" class="patronage" aria-labelledby="patronage-title" hidden>
+            <svg viewBox="0 0 120 48" width="76" height="31" aria-hidden="true"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M5 24 Q30 0 60 24 Q90 48 115 24 M5 24 Q30 48 60 24 Q90 0 115 24"/><path d="M60 9 L65 20 L76 24 L65 28 L60 39 L55 28 L44 24 L55 20Z" fill="currentColor"/></g></svg>
+            <h2 id="patronage-title">A Little Patronage</h2>
+            <p>If these little moments bring something beautiful to your day and you’d like to encourage more of them, your patronage is always welcome.</p>
+            <span id="patronage-pending" class="patronage-pending">Patronage will be available soon.</span>
+          </aside>
         </section>
         <section id="saved" hidden>
           <h2>Your saved moments</h2>
@@ -438,7 +452,7 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
         </section>
         <section class="physical" aria-labelledby="physical-title">
 <div class="physical-art" aria-hidden="true"><div class="physical-box"><img src="data:image/webp;base64,UklGRhAHAABXRUJQVlA4WAoAAAAQAAAARQAAYAAAQUxQSMECAAART6CmbQM2VRK90hERoZI/vUFn2zY1bvXOYjtmu5scPl04u53ZVmeGLpyoM9vqzNaUS9K8v1fSQKCP6P8E4Pct//hjPJD8/JSm6bfJEAtP+3+Ojb38nK4Jb5vp3yhVD+u+5q/qqJT37/yopwYsZdb0cj8N6+ex8PChA8fbGTf5TbiotON03IJzroXLN7hnGo7vZzx8SIXDvfCAfstOxfA5H9kdp8IHHoXV+ajhpd+0UbOjtpf3szZHzbzrRXVt7kQee8GlzT4y1rw8iCo1ixHbXvr1qo02+ux66TWqrhsypxY+rv+tuhWKZMvHUVx1BmnIyEc/qfoKZCTrHkZx1RowINnxkHWrOsCIpK47KVMlKxg5vafFf0C/wKbLMOlYbZTEwu65OfzPSpXwvzJZcsP12aqOha4XXjy+ASBzLrcrsAYgK2EE4MyQArhjfNSs2gNwXMYm5kkmwHPDVr9WdQ5AmrIItyQ1cEctLlB9JwCclHFyQJLN54aJ6lrc1AHIvEybQjQiedm2eN8CgAr7msXzucJtGOwXZO6mhc1AAFDG7RC2Ry0AuHebsVLdwsCtZYX7FQFsuv1vd8TvE9hwO3Sh3n9lnBK7eSaP9OiA7cf6Yu4WO2D+u1Bnpko/FSIXfDwQePG57GDiuSE564TT75OYL4kFZKHlhq2nq7wQ1YB7kmx4gFpa/ny++1cN+ECSWviwzUomgjxnqV6rBXhfRsa1H4CRv3kLLbwpG3g/Irn3UIj8DclYGZK64U0acmZIUk/C+wapt0jqKfgfkOs5qSfhXxryiTyoI+AxSeq3AiEzkskkgm6RTOoIKc9IsoGg8ynJLgJ/IHU9VEZOI/AG2UHoPhMRLOd/CP2crAc7YoTgAzbD5TGCz3Mm3K2uBds0EULLnO1wRteCIY8QXJpWuHktwr2PEH7j/x9ART8A/vgRfmIAVlA4ICgEAAAwFQCdASpGAGEAPtFWo00oJCMiLbZsyQAaCWQAzjCzxm3O7YDnj/TFvQG8+4Bv2Od+dge0stzlo6TtnHeXJOnpN2/328ktA5d0VtCUlC7H643LpAwUSt75jTTGvRZzZOM9hCZCwOln/TeFNsYljleawQhAiWU8WvyP1TrJSNYJOV8/BHqsf0S1hPus8EVd/iw6u8z15loSKm1CINXhf8r2oB3QhrAokuse7E/eF4rAKCdAAP71Of/90z/958P/94NGDFbqPDBZ+/ydgBL2Xp6FYgVwrwqPKVU5mK9gQML77qsJL8/kxv/49ixW46aeNMZAXgi5Bb1tjWOlS9cvTzIifjnSsTP2/snLTQMEFwBcB15nJ6YWV2/Y45bN9HIueQvtyydln55MLeD+cowLhxKyBKCjA8mlEBSzqAHkQf9vdAq7kC04rp+uap+8NCWmtH9xGKWL0gu1XNSiIbOo/5kp4Ew3ihcgKITYJKqaddAbnEnDkFYzsJF9hsFDuL8QtcOjhZEc1taqN7pyYL9ITvO3DwRVo0tUxq6+P/AJm+cza+HgJX3AxWYnoH2ER82GvBrEsMEbYwK4d9mx3gx0Jo1S8cMlLjixmZAxpVhkTWV0niA6mwAt1OkEFnTUvLhp1UBfE3D2+MtGnhRMzeEku/RFs4fK3nfvnewD+ZobPz9s9C6BqaXAJhBPVOBYdjlc4i9Nzzlsl9ML0C8AMjdl+OLfiie82GFhdCJgpGVN+aa3wsX/uIZHER8k2j0WOJ3qs1hiuwPkuB2WnY4f0H87jzrAt/DVijBUVHJpkVF/KfKSjF/46yd8pJb63jyKONqr2ivfgM+ASg/kUNxld2fJp7KnUAx2Wh7h5c9q6GSbixymIweWpJrHNq6/3f7hCqstBr95azEXxdvTZw8hGsxzX+lCq59+35qZoSkCTyqH+y67+lfH7sZgTY/Ah0ktFET57URTDP8nY3d2Ry8kmRtyEPR1/wTCsx4Oapriwt04yvXPX8jVIx1hm1A58KSQIiSL5TjUQhyo4zfvRtcZk8++QmO1R5SElE1bsYCUHGfrVfkS/A7cXRHpLFumgHN7RC01zm+9Mu29r5VoyhmZLAZJFjQs9IP1BR+6gtOtS49XrlX+Ot0p4xmQvOQ/X8v//aEC8gdLmoPEvbQDRSuSr9hgTLraToYXwEYHDWDAnqD0o8YtFwn/0kF0Apc7bZKUO+q32aHVpXLhyHj2VITa7I0grPwzANiZ4eHs5whNDQbzGlFMps7ZRuXL8TQehBH1H8eMRWob8OgUzeCqd8JBNpzHg2Qwf/1gqYvhsmLgFncsBf3moaT6WUM0lsEOk3yPUpLNDw8h635mlK3Mnj0HvK/qFKw9ZO6t1M7LWwokCObXwMMr+zKd0+CkHHeDlqUkQpp7FpeVlVkAAAAAAA==" alt=""><span>SOULPHORIA</span><strong>A Moment of<br><em>Possibility</em></strong><small>108 REFLECTION CARDS</small></div></div>
-<div class="physical-copy"><div class="eyebrow">THE PHYSICAL COLLECTION</div><h2 id="physical-title">Bring a little magick into your mornings.</h2><p>108 invitations to question, contemplate, indulge, create and explore the mysteries of existence.</p><p>Draw a card with your morning coffee. Take one into your meditation. Share one with a lover. Allow yourself a moment of possibility.</p><p class="edition-status">Physical edition in development. Pricing and availability to be announced.</p><button id="interest" class="primary">I'm interested in the collection</button><p id="interest-note" role="status" hidden></p></div>
+<div class="physical-copy"><div class="eyebrow">THE PHYSICAL COLLECTION</div><h2 id="physical-title">Bring the magick home.</h2><p>108 cards. Endless possibilities. A beautiful ritual to make your own.</p><p>Draw a card with your morning coffee. Take one into your meditation. Share one with a lover. Allow yourself a moment of possibility.</p><p class="edition-status">Physical edition in development. Pricing and availability to be announced.</p></div>
 </section>
 <footer>
           <p>Many expressions. One essence.</p>
@@ -1130,6 +1144,7 @@ function show(i) {
   $('deck').hidden = true;
   $('face').hidden = false;
   $('extras').hidden = false;
+  $('patronage').hidden = false;
   $('card-title').textContent = cards[i][0];
   $('category').textContent = cards[i][1].toUpperCase();
   $('reflection').textContent = cards[i][2];
@@ -1248,7 +1263,7 @@ $('deck').onclick = dailyDraw;
 $('daily').onclick = dailyDraw;
 refreshDaily();
 window.addEventListener('focus',refreshDaily);
-$('interest').onclick=()=>{try{localStorage.setItem('possibility-physical-interest','yes')}catch{}$('interest-note').hidden=false;$('interest-note').textContent='Your interest is noted on this device only. No order or contact details have been submitted. Please return for availability updates.';};
+
 $('draw').onclick = draw;
 $('save').onclick = () => {
   if (current >= 0) {
@@ -1270,6 +1285,7 @@ $('home').onclick = e => {
   $('deck').hidden = false;
   $('face').hidden = true;
   $('extras').hidden = true;
+  $('patronage').hidden = true;
   $('draw').textContent = 'Explore another moment';
   $('status').textContent = '';
   history.replaceState(null, '', location.pathname + location.search);
