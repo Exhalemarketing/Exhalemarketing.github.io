@@ -424,13 +424,11 @@ a[href]:active,button:not(:disabled):active,summary:active,[role="button"]:activ
 button:disabled,[aria-disabled="true"]{cursor:not-allowed}
 @media(prefers-reduced-motion:reduce){a[href],button,summary,input[type="submit"],[role="button"]{transition:none!important;translate:none!important}}
 .prism-nav{display:flex;align-items:center;gap:14px}.prism-menu{position:relative;z-index:20}.prism-menu summary{cursor:pointer;font:inherit;list-style:none;padding:10px 6px;color:inherit;white-space:nowrap}.prism-menu summary::-webkit-details-marker{display:none}.prism-links{position:absolute;right:0;top:100%;min-width:235px;background:#F8F3F2;color:#12334E;border:1px solid #B88F9B66;box-shadow:0 12px 28px #12334e22;padding:10px;display:grid;gap:0;border-radius:6px}.prism-links a{display:block;padding:11px 9px;text-decoration:none;color:#12334E;font-size:15px;line-height:1.4}.prism-links a:hover,.prism-links a:focus-visible{background:#E3EBF3;color:#A21E49;outline:2px solid #A87524;outline-offset:-2px}.prism-menu summary:focus-visible{outline:2px solid #A87524;outline-offset:3px}.prism-musings{font-size:14px;color:inherit;text-decoration:underline;text-underline-offset:4px}@media(max-width:600px){header{flex-wrap:wrap;gap:5px;height:auto}.prism-nav{gap:8px;margin-left:auto}.prism-menu summary{font-size:12px}.prism-links{right:0;min-width:210px}}</style>
-  <link rel="stylesheet" href="./prism-shell.css?v=2"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"></head>
+  <link rel="stylesheet" href="./prism-shell.css?v=3"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"></head>
   <body>
     <div id="app">
       <main>
-        <header class="prism-header">
-          <a class="wordmark" href="./">Alessandra <span>Sagredo</span></a><a id="home" href="#" hidden aria-hidden="true" tabindex="-1">Return to deck</a><div class="header-links prism-nav"><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a><details class="prism-menu"><summary>Find your path ✳</summary><div class="prism-links"><a href="./">Return to Prism</a><a href="./#explore">Consciousness &amp; intuition</a><a href="./#become">Transformation &amp; Death</a><a href="./#storykeeper">Stories &amp; memories</a><a href="./#create">Literature &amp; art</a><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a></div></details><button id="collection">Saved <span id="count">0</span></button></div>
-        </header>
+        <header class="prism-header"><details class="prism-menu"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</summary><div class="prism-links"><a href="./">Home</a><a href="./#explore">Consciousness &amp; intuition</a><a href="./#become">Transformation &amp; Death</a><a href="./#storykeeper">Stories &amp; memories</a><a href="./#create">Literature &amp; art</a><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a><a class="card-link" href="./possibility.html">Take a moment · Pick a card</a></div></details><a class="wordmark" href="./">Alessandra <span>Sagredo</span></a><div class="prism-utility"><button id="collection">Saved <span id="count">0</span></button><a id="home" href="#" hidden aria-hidden="true" tabindex="-1">Return to deck</a></div></header>
         <section class="intro">
           <div class="eyebrow">EXPLORING WHAT IS. REVEALING WHAT COULD BE.</div>
           <h1>A Moment of <em>Possibility</em></h1>
@@ -1335,5 +1333,5 @@ persist();
 const match = location.hash.match(/^#moment-(\d+)$/);
 if (match && cards[Number(match[1]) - 1]) show(Number(match[1]) - 1);
 </script>
-  </body>
+  <script>document.addEventListener('click',e=>{const m=document.querySelector('.prism-header .prism-menu');if(m&&(!m.contains(e.target)||e.target.closest('.prism-links a')))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'){const m=document.querySelector('.prism-header .prism-menu[open]');if(m){m.open=false;m.querySelector('summary').focus();}}});</script></body>
 </html>
