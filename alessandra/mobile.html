@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alessandra Sagredo | Many expressions. One essence.</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+
+
+
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #35332f;
+  background: #f7f3eb;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #826443;
+  outline-offset: 5px;
+}
+header {
+  height: 88px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6vw;
+  border-bottom: 1px solid #9f8c7029;
+  position: relative;
+  z-index: 2;
+}
+.wordmark {
+  font-size: 24px;
+  letter-spacing: -0.7px;
+}
+.wordmark span {
+  font-style: italic;
+}
+#menu {
+  background: none;
+  border: 0;
+  font: 11px Arial;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+#menu span {
+  margin-left: 12px;
+  font-size: 18px;
+  color: #9b8869;
+}
+main {
+  max-width: 1800px;
+  margin: auto;
+}
+.hero {
+  min-height: 530px;
+  height: clamp(530px, 72vh, 850px);
+  display: grid;
+  grid-template-columns: 43% 57%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 15% 15%, #fffefb, transparent 68%),
+    linear-gradient(125deg, #f9f6ef, #e5ddd0);
+}
+.copy {
+  align-self: center;
+  z-index: 1;
+  padding: 42px 0 55px 6vw;
+  pointer-events: none;
+}
+.eyebrow,
+.caption,
+#brand,
+#number,
+footer {
+  font:
+    10px Arial,
+    sans-serif;
+  letter-spacing: 2.5px;
+}
+.eyebrow {
+  color: #897b66;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow i {
+  height: 1px;
+  width: 30px;
+  background: #ae9570;
+}
+h1 {
+  font-size: clamp(44px, 5.6vw, 93px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+  margin: 27px 0 24px;
+  white-space: nowrap;
+}
+h1 em {
+  font-weight: 400;
+  color: #796b59;
+}
+p {
+  font-size: clamp(16px, 1.6vw, 22px);
+  color: #777064;
+  line-height: 1.65;
+}
+.instruction {
+  margin-top: 48px;
+  font: 11px Arial;
+  line-height: 1.9;
+  letter-spacing: 1px;
+  color: #7e7465;
+}
+.instruction span {
+  font-size: 20px;
+  margin-right: 7px;
+}
+.instruction small {
+  padding-left: 28px;
+  letter-spacing: 0.4px;
+}
+.optics {
+  position: relative;
+  min-width: 0;
+  isolation: isolate;
+}
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+canvas:active {
+  cursor: grabbing;
+}
+.caption {
+  position: absolute;
+  bottom: 27px;
+  left: 25px;
+  color: #827762;
+  pointer-events: none;
+}
+.caption span {
+  opacity: 0.4;
+}
+#pause {
+  position: absolute;
+  bottom: 18px;
+  right: 25px;
+  border: 1px solid #897b6655;
+  background: #fff5;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ray {
+  position: absolute;
+  pointer-events: auto;
+  border: 0;
+  background: #fff9;
+  border-radius: 40px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 11px Arial;
+  box-shadow: 0 1px 12px #806a4b12;
+  white-space: nowrap;
+  backdrop-filter: blur(9px);
+  transition: background 0.2s;
+}
+.ray:hover {
+  background: white;
+}
+.ray i {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 8px var(--tone);
+}
+nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #a9987e33;
+  border-bottom: 1px solid #a9987e33;
+  padding: 0 6vw;
+}
+nav button {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid #a9987e33;
+  text-align: left;
+  padding: 24px 15px 23px 20px;
+  transition: background 0.25s;
+}
+nav button:last-child {
+  border: 0;
+}
+nav button:hover {
+  background: #fff9;
+}
+nav small {
+  display: block;
+  color: #8c7e6b;
+  font: 9px Arial;
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+nav strong {
+  font-size: 21px;
+  font-weight: 400;
+  display: block;
+}
+nav span {
+  display: block;
+  color: #80786c;
+  font: 11px Arial;
+  margin-top: 8px;
+}
+nav i {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--tone);
+  margin-bottom: 12px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 6vw;
+  font-size: 8px;
+  color: #8b8174;
+  gap: 15px;
+}
+dialog {
+  width: min(620px, 92vw);
+  max-height: 90vh;
+  border: 1px solid #fff;
+  padding: 60px 40px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, white, var(--wash, #eee6db));
+  color: #35332f;
+  box-shadow: 0 30px 100px #3a302b40;
+}
+dialog::backdrop {
+  background: #544b4055;
+  backdrop-filter: blur(12px);
+}
+dialog[open] {
+  animation: appear 0.45s ease;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.close {
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  border: 0;
+  background: none;
+  font-size: 32px;
+  font-weight: 300;
+}
+.symbol {
+  font-size: 70px;
+  color: var(--tone, #887761);
+  line-height: 1.5;
+}
+#brand {
+  color: #746757;
+}
+h2 {
+  font-size: clamp(40px, 7vw, 70px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 20px 0;
+}
+dialog p {
+  max-width: 400px;
+  margin: 0 auto 25px;
+}
+#visit {
+  display: inline-block;
+  border-bottom: 1px solid #9c8867;
+  padding: 12px 0;
+  font-size: 16px;
+}
+#visit[hidden] {
+  display: none;
+}
+#return {
+  display: block;
+  margin: 28px auto 0;
+  background: none;
+  border: 0;
+  font: 11px Arial;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 720px) {
+  header {
+    height: 65px;
+    padding: 0 6vw;
+  }
+  .wordmark {
+    font-size: 20px;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .copy {
+    padding: 36px 6vw 0;
+    text-align: center;
+    align-self: stretch;
+  }
+  .eyebrow {
+    justify-content: center;
+    font-size: 9px;
+  }
+  h1 {
+    font-size: clamp(42px, 10vw, 62px);
+    margin: 18px 0 12px;
+  }
+  .copy p {
+    margin: 0;
+    font-size: 17px;
+  }
+  .instruction {
+    margin-top: 15px;
+    font-size: 10px;
+  }
+  .optics {
+    height: 385px;
+  }
+  .caption {
+    font-size: 8px;
+    bottom: 15px;
+    left: 15px;
+  }
+  #pause {
+    bottom: 8px;
+    right: 15px;
+  }
+  .ray {
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+  nav {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 4vw;
+  }
+  nav button {
+    border-bottom: 1px solid #a9987e33;
+    padding: 17px 10px;
+  }
+  nav button:nth-child(even) {
+    border-right: 0;
+  }
+  nav button:last-child {
+    grid-column: auto;
+  }
+  nav strong {
+    font-size: 19px;
+  }
+  footer {
+    font-size: 7px;
+    line-height: 1.8;
+    flex-wrap: wrap;
+  }
+  dialog {
+    padding: 40px 22px;
+  }
+}
+
+/* Storykeeper: a warm, editorial chapter within the prism. */
+nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+nav button { min-width: 0; }
+.story-section {
+  display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px;
+  padding: 90px 9vw 65px; background: linear-gradient(135deg,#fffaf3,#f0e7da);
+  scroll-margin-top: 20px; border-bottom: 1px solid #a9987e33;
+}
+.story-kicker { font: 10px Arial,sans-serif; letter-spacing: 2px; color: #826b54; }
+.story-intro h2 { font-size: clamp(39px,5.2vw,76px); line-height: 1.05; }
+.story-intro h2 em { color: #887058; font-weight: 400; }
+.story-intro p { max-width: 560px; }
+.story-action { display: inline-block; background: #695542; color: #fffaf3; padding: 15px 22px; margin-top: 10px; font: 12px Arial,sans-serif; line-height: 1.5; }
+.story-action:hover { background: #48392d; }
+.story-action.secondary { background: transparent; color: #695542; border: 1px solid #695542; }
+.story-action.secondary:hover { background: #e6d9c9; }
+.story-book { display: grid; place-items:center; min-height: 280px; background: linear-gradient(128deg,#d6c5ab44,#fff8e044); position: relative; overflow:hidden; }
+.story-book::before { content:''; position:absolute; width:150%; height:60%; transform:rotate(-30deg); background:linear-gradient(90deg,transparent,#f7c9c333,#ebd79155,#b4cad555,transparent); filter:blur(16px); }
+.paper { position:relative; width:62%; max-width:230px; min-height:255px; padding:25px 22px; transform:rotate(-8deg); background:#fffdf5; box-shadow: 12px 18px 35px #80664f33; border-left:3px double #c6ae8d; }
+.paper span,.paper small { display:block; font:9px Arial,sans-serif; letter-spacing:2px; color:#9e896f; }
+.paper i { display:block; font-size:24px; color:#76614d; margin:24px 0; }
+.paper b { display:block; height:1px; background:#d8cbb8; margin:14px 0; }
+.paper small { margin-top:24px; letter-spacing:1px; }
+.story-offers { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:24px; scroll-margin-top:24px; }
+.story-offers article { border:1px solid #c5b39b88; background:#fffcf788; padding:32px; }
+.story-offers h3 { font-size:32px; font-weight:400; margin:14px 0; }
+.story-price { font-size:28px; color:#695542; }
+.story-price small { font:12px Arial,sans-serif; color:#776c60; }
+.story-offers p,.story-offers li { font-size:16px; line-height:1.7; color:#60594f; }
+.story-offers ul { padding-left:20px; list-style:disc; }
+.story-offers .story-note { font-size:13px; font-style:italic; }
+.story-privacy { grid-column:1/-1; font-size:14px; margin:0; }
+.story-back { grid-column:1/-1; font:11px Arial,sans-serif; letter-spacing:1px; color:#695542; }
+@media(max-width:1000px) and (min-width:721px) { nav {grid-template-columns:repeat(4,1fr);} }
+@media(max-width:720px) {
+ nav {grid-template-columns:repeat(2,1fr);}
+ nav button:last-child {grid-column:auto;}
+ .story-section {grid-template-columns:1fr; padding:48px 6vw; gap:25px;}
+ .story-offers {grid-template-columns:1fr;}
+ .story-offers article {padding:23px;}
+ .story-book {min-height:300px;}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Four purpose-led pathways. */
+.story-section[hidden] { display: none; }
+#world-offers { display: grid; gap: 14px; text-align: left; margin-top: 25px; }
+#world-offers article { border-top: 1px solid #a9987e66; padding-top: 15px; }
+#world-offers h3 { font-size: 24px; font-weight: 400; margin: 0 0 6px; }
+#world-offers p { font-size: 15px; margin: 0 0 8px; max-width: none; }
+#world-offers a { display: inline-block; padding: 8px 0; border-bottom: 1px solid #9c8867; font-size: 14px; }
+nav strong { font-size: clamp(23px, 2.5vw, 36px); }
+.ray { font-size: 13px; }
+@media(max-width:720px) { nav strong {font-size: 25px;} .ray {font-size: 11px;} }
+
+/* Dedicated worlds and visitor-focused discovery */
+[hidden] {display:none!important;}
+.header-links{display:flex;align-items:center;gap:24px;font:12px Arial,sans-serif;}
+.header-links a:hover{text-decoration:underline;}
+.copy .philosophy{font-style:italic;margin-bottom:12px;}
+.copy .grounding{max-width:390px;font-size:16px;line-height:1.7;color:#5f584f;}
+.copy .instruction{margin-top:26px;}
+.path-intro{text-align:center;padding:30px 6vw 15px;}
+.path-intro h2{font-size:32px;letter-spacing:-.6px;margin:0;}
+.path-intro p{font-size:15px;margin:8px 0;}
+nav button{padding:25px 18px;}
+nav button span{font-size:14px;line-height:1.5;color:#655d51;}
+nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:15px;}
+.featured{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:52px 9vw;background:#eee5d9;}
+.featured h2{font-size:37px;margin:12px 0;letter-spacing:-1px;}
+.featured p{font-size:15px;margin:0;}
+.featured a{flex-shrink:0;}
+#world-page{--world-tone:#796b59;--world-wash:#eee5d8;}
+.world-hero{display:grid;grid-template-columns:1.15fr .85fr;min-height:480px;background:linear-gradient(120deg,#fffdf7,var(--world-wash));animation:appear .5s ease;}
+.world-copy{padding:55px 0 65px 9vw;align-self:center;}
+.back-link{display:inline-block;margin:0 0 32px;font:12px Arial,sans-serif;color:#64584a;text-decoration:underline;text-underline-offset:4px;}
+.world-copy .story-kicker{color:var(--world-tone);}
+.world-copy h1,.about-content h1{font-size:clamp(45px,5.5vw,82px);white-space:normal;line-height:1.04;max-width:780px;}
+.world-copy p{max-width:610px;font-size:18px;color:#514e47;}
+.world-action{display:inline-block;background:var(--world-tone);color:white;padding:15px 23px;font:13px Arial,sans-serif;margin-top:16px;}
+.world-action:hover{filter:brightness(.9);}
+.world-art{display:grid;place-content:center;position:relative;overflow:hidden;color:var(--world-tone);min-height:340px;}
+.world-art::before{content:'';position:absolute;inset:0;background:linear-gradient(126deg,transparent 24%,#fff9 25%,transparent 54%),radial-gradient(ellipse at 65% 32%,#fff9,transparent 60%);}
+.world-art svg{position:relative;width:min(36vw,450px);filter:drop-shadow(12px 16px 14px #74634c22);}
+.world-art span{position:absolute;bottom:24px;right:36px;letter-spacing:6px;font:10px Arial,sans-serif;}
+.world-content{padding:64px 9vw;background:#fbf8f2;}
+.world-content h2{font-size:42px;letter-spacing:-1px;margin:15px 0 30px;}
+.offering-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;}
+.offering-grid article{border-top:2px solid var(--world-tone);padding:23px;background:#fffdfa;}
+.offering-grid h3{font-size:27px;font-weight:400;margin:13px 0;}
+.offering-grid p{font-size:16px;color:#60594f;}
+.offering-grid a{display:inline-block;margin-top:15px;font-size:14px;color:var(--world-tone);text-decoration:underline;text-underline-offset:4px;}
+.cross-links{display:flex;gap:24px;flex-wrap:wrap;align-items:center;padding:25px 9vw;background:var(--world-wash);font-size:17px;}
+.cross-links span{font:10px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;}
+.cross-links a:hover{text-decoration:underline;}
+.about-content{padding:55px 9vw 75px;max-width:950px;}
+.about-content p{max-width:720px;font-size:19px;}
+.about-lead{font-style:italic;}
+@media(max-width:720px){
+ .header-links{gap:12px;font-size:11px;}
+ #menu{font-size:9px;letter-spacing:.7px;}
+ #menu span{margin-left:2px;}
+ .wordmark{font-size:18px;}
+ .copy .grounding{margin:10px auto 0;font-size:14px;}
+ .copy .instruction{margin-top:12px;}
+ .hero .optics{height:340px;}
+ .featured{flex-direction:column;align-items:flex-start;padding:35px 6vw;}
+ .world-hero{grid-template-columns:1fr;}
+ .world-copy{padding:28px 6vw;}
+ .world-copy h1{font-size:48px;}
+ .world-copy p{font-size:17px;}
+ .world-art{min-height:220px;}
+ .world-art svg{width:230px;}
+ .world-content{padding:38px 6vw;}
+ .cross-links{padding:24px 6vw;gap:16px;}
+ .about-content{padding:30px 6vw;}
+}
+
+:root{font-family:Poppins,Georgia,sans-serif;color:#30463e;background:#faf6ed}h1,h2,h3{font-weight:300;letter-spacing:-.045em}h1{font-size:clamp(38px,4.9vw,78px);white-space:normal}.hero{background:radial-gradient(ellipse at 15% 10%,#fffefb,transparent 65%),linear-gradient(115deg,#fbf8ef,#eee5d6)}.optics::before{content:'';position:absolute;inset:7% 42% 8% 4%;border:1px solid #b79c6844;border-radius:48% 48% 0 0;box-shadow:inset 0 0 0 7px #fff7,inset 0 0 0 8px #b79c6828;pointer-events:none}.ray{font-family:Poppins,sans-serif;background:transparent;box-shadow:none;backdrop-filter:none;border-radius:0;min-height:48px;max-width:45%;white-space:normal;padding:8px 3px;text-align:left;color:#30463e;gap:7px}.ray strong{font-weight:500;font-size:clamp(10px,1vw,15px);display:block}.ray small{display:block;font-size:10px;color:#746451}.ray:hover,.ray:focus-visible{background:#fff7}.ray i{flex:none}.ray span{margin-left:3px}.deck-feature{padding:55px 9vw;display:grid;grid-template-columns:minmax(130px,230px) 1fr;gap:7vw;align-items:center;background:#f8f3e9}.deck-feature h2{font-size:clamp(30px,4vw,56px);margin:12px 0}.deck-art{aspect-ratio:2/3;background:#244b40;border:8px double #b99b62;color:#e5c788;display:grid;place-items:center;text-align:center;box-shadow:8px 12px 26px #4b3c2925;border-radius:7px;font-family:Georgia,serif;font-size:30px;transform:rotate(-4deg)}.deck-art div{border:1px solid #b99b62;padding:25px 12px;border-radius:48% 48% 0 0}.deck-art small{font-size:10px;letter-spacing:2px}textarea{width:100%;font:inherit;background:#fffdf8;border:1px solid #b9a489;padding:12px}.story-action{border:0}.story-action.secondary{border:1px solid #695542}canvas{touch-action:pan-y}.copy{pointer-events:auto}nav strong{font-size:clamp(17px,2vw,27px)}@media(max-width:720px){.hero .optics{height:365px}.ray strong{font-size:11px}.ray small{font-size:9px}.deck-feature{padding:35px 6vw;grid-template-columns:105px 1fr;gap:20px}.deck-art{font-size:17px}.deck-art div{padding:12px 3px}.deck-art small{font-size:7px}.deck-feature p{font-size:14px}}
+/* Light-led navigation: fixed layout, matching hue, no flashing. */
+.ray{position:absolute;isolation:isolate;transition:background .4s ease,box-shadow .4s ease,color .4s ease;}
+.ray::before{content:'';position:absolute;inset:3px -5px;z-index:-1;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--tone) 19%,transparent),transparent);opacity:0;transition:opacity .4s ease;}
+.ray.illuminated::before,.ray:focus-visible::before{opacity:1;}
+.ray.illuminated strong{color:var(--tone);text-shadow:0 0 12px color-mix(in srgb,var(--tone) 23%,transparent);}
+.ray.illuminated i{box-shadow:0 0 0 4px color-mix(in srgb,var(--tone) 16%,transparent),0 0 17px var(--tone);}
+.ray.illuminated span{color:var(--tone);}
+@media(prefers-reduced-motion:reduce){.ray,.ray::before{transition:none!important;}}
+.ray{max-width:37%;min-width:0}.ray div{min-width:0}.ray strong{overflow-wrap:normal}.optics::before{inset:7% 34% 8% 10%}@media(max-width:720px){.ray{max-width:43%}.optics::before{inset:7% 42% 8% 4%}} 
+/* Keep navigation clean: no background colour wash, only a crisp indicator. */
+.ray,.ray:hover,.ray:focus-visible{background:transparent;box-shadow:none}
+.ray::before,.ray.illuminated::before,.ray:focus-visible::before{display:none}
+.ray.illuminated strong{color:var(--tone);text-shadow:none}
+.ray.illuminated i{box-shadow:none;outline:1px solid var(--tone);outline-offset:3px}
+.ray.illuminated span{color:var(--tone)}
+
+/* Explicit interaction stacking: canvas receives movement, labels remain above it. */
+.optics{z-index:2}.optics canvas{z-index:1;inset:0;pointer-events:auto;touch-action:pan-y}.optics .orbit{z-index:2;pointer-events:none}.optics .ray{pointer-events:auto}.optics #pause{z-index:3}.optics .caption{z-index:3;pointer-events:none}.optics canvas:focus-visible{outline:2px solid #a88b56;outline-offset:-4px}
+
+.optics{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}.optics canvas{touch-action:none;pointer-events:auto;cursor:grab}.optics.turning,.optics.turning canvas{cursor:grabbing}.optics .ray,.optics #pause{touch-action:manipulation;cursor:pointer}
+
+/* An unmistakable, restrained invitation beside the interactive object. */
+.crystal-cue{position:absolute;left:36%;bottom:5%;transform:translateX(-50%);z-index:3;pointer-events:none;text-align:center;color:#776044;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap;transition:opacity .35s ease}
+.crystal-cue svg{animation:crystal-invite 3.5s ease-in-out infinite;display:block;margin-bottom:1px}
+.crystal-cue strong{font-size:12px;letter-spacing:.055em;font-weight:600}
+.crystal-cue small{font-size:10px;color:#756653}
+.optics.turning .crystal-cue{opacity:.22}
+.optics.has-turned .crystal-cue svg{animation:none}
+@keyframes crystal-invite{0%,100%{transform:translateX(-5px);opacity:.65}50%{transform:translateX(5px);opacity:1}}
+@media(max-width:519px){.crystal-cue{left:28%;bottom:4%}.crystal-cue strong{font-size:11px}.crystal-cue small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.crystal-cue svg{animation:none}}
+.deck-art .soul-emblem{height:85px;width:auto;max-width:80%;object-fit:contain}.deck-art div{padding:12px 8px}@media(max-width:720px){.deck-art .soul-emblem{height:44px}}.hero .copy h1{font-size:clamp(36px,4.3vw,69px);line-height:1.08;letter-spacing:-.05em}.hero .copy h1 em{font-style:normal}@media(max-width:720px){.hero .copy h1{font-size:clamp(34px,8.2vw,55px)}} 
+/* Editorial typography trial: expressive, weighty serif with restrained sans. */
+:root{font-family:'Poppins',Arial,sans-serif;--display:'Fraunces',Georgia,serif}
+h1,h2,h3,nav strong{font-family:var(--display);font-optical-sizing:auto;font-weight:750;font-variation-settings:"SOFT" 35,"WONK" 1;letter-spacing:-.045em}
+.hero .copy h1{font-family:var(--display);font-weight:800;font-size:clamp(45px,5.2vw,86px);line-height:.99;letter-spacing:-.055em;margin:22px 0 23px;max-width:780px;text-wrap:balance}
+.hero .copy h1 em{font-family:inherit;font-weight:800;font-style:normal;color:#79664c}
+.copy .philosophy{font-family:'Poppins',Arial,sans-serif;font-size:clamp(13px,1.15vw,18px);font-weight:500;line-height:1.55;font-style:normal;letter-spacing:-.015em}
+.copy .grounding{font-size:clamp(14px,1.12vw,17px);font-weight:400;line-height:1.75;max-width:450px}
+.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer{font-family:'Poppins',Arial,sans-serif}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2{font-weight:750;line-height:1.08;letter-spacing:-.04em}
+.world-copy h1,.about-content h1{font-weight:800;line-height:1.01;letter-spacing:-.045em}
+nav strong,.offering-grid h3,.story-offers h3{font-weight:700;line-height:1.13}
+.ray strong{font-family:'Poppins',Arial,sans-serif;font-weight:500;letter-spacing:0}
+@media(min-width:721px) and (max-width:1050px){.hero .copy h1{font-size:clamp(39px,5.2vw,56px)}.hero .copy{padding-left:4vw}.hero .copy .instruction{margin-top:20px}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(42px,10vw,68px);line-height:1.02;margin:18px auto}.copy .philosophy{font-size:14px;margin:0 auto 9px}.copy .grounding{font-size:14px;line-height:1.65}.world-copy h1,.about-content h1{font-size:clamp(40px,9vw,60px)}}
+
+/* Contemporary gallery typography */
+:root{font-family:Manrope,Arial,sans-serif;--display:'Space Grotesk',Arial,sans-serif}
+h1,h2,h3,nav strong,.hero .copy h1,.world-copy h1,.about-content h1{font-family:var(--display);font-variation-settings:normal;font-optical-sizing:auto;font-weight:700;letter-spacing:-.065em}
+.hero .copy h1{font-size:clamp(44px,5.05vw,83px);line-height:1.01;max-width:760px;text-wrap:balance}
+.hero .copy h1 em{font-weight:700;font-style:normal;color:#78664e}
+.copy .philosophy,.copy .grounding,.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer,.ray,.ray strong,.wordmark{font-family:Manrope,Arial,sans-serif}
+.copy .philosophy{font-weight:600;letter-spacing:-.025em}
+.copy .grounding{font-weight:400;line-height:1.7}
+.wordmark{font-weight:600;letter-spacing:-.04em}.wordmark span{font-style:normal}
+.ray strong{font-weight:650;letter-spacing:-.015em}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2,nav strong,.offering-grid h3,.story-offers h3{font-weight:700;letter-spacing:-.05em}
+@media(max-width:1050px) and (min-width:721px){.hero .copy h1{font-size:clamp(37px,5vw,53px)}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(40px,9.7vw,66px);line-height:1.02}.world-copy h1,.about-content h1{font-size:clamp(39px,9vw,60px)}}
+
+/* Sensual contemporary editorial typography: organic weight and softer rhythm. */
+:root{font-family:'DM Sans',Arial,sans-serif;--display:'Bricolage Grotesque',Georgia,serif}
+h1,h2,h3,nav strong,.hero .copy h1,.world-copy h1,.about-content h1{font-family:var(--display);font-weight:800;font-optical-sizing:auto;font-variation-settings:normal;letter-spacing:-.048em}
+.hero .copy h1{font-size:clamp(44px,5.15vw,86px);line-height:1.015;text-wrap:balance;letter-spacing:-.05em}
+.hero .copy h1 em{font-weight:800;font-style:normal;color:#82684d}
+.copy .philosophy,.copy .grounding,.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer,.ray,.ray strong,.wordmark{font-family:'DM Sans',Arial,sans-serif}
+.copy .philosophy{font-weight:500;letter-spacing:-.015em}
+.copy .grounding{font-weight:400;line-height:1.75}
+.wordmark{font-weight:600;letter-spacing:-.035em}
+.ray strong{font-weight:600;letter-spacing:-.01em}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2,nav strong,.offering-grid h3,.story-offers h3{font-weight:700;letter-spacing:-.04em}
+@media(min-width:721px) and (max-width:1050px){.hero .copy h1{font-size:clamp(38px,5vw,55px)}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(40px,9.8vw,67px);line-height:1.04}.world-copy h1,.about-content h1{font-size:clamp(39px,9vw,60px)}}
+
+/* Fashion editorial trial: voluptuous contrast, modern proportions. */
+:root{font-family:Jost,Arial,sans-serif;--display:'Bodoni Moda',Georgia,serif}
+h1,h2,h3,nav strong,.hero .copy h1,.world-copy h1,.about-content h1{font-family:var(--display);font-weight:850;font-optical-sizing:auto;font-variation-settings:normal;letter-spacing:-.055em}
+.hero .copy h1{font-size:clamp(47px,5.5vw,91px);font-weight:900;line-height:.99;letter-spacing:-.065em;text-wrap:balance}
+.hero .copy h1 em{font-family:inherit;font-weight:850;font-style:normal;color:#88674e}
+.copy .philosophy,.copy .grounding,.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer,.ray,.ray strong,.wordmark{font-family:Jost,Arial,sans-serif}
+.copy .philosophy{font-size:clamp(14px,1.2vw,19px);font-weight:500;letter-spacing:0}
+.copy .grounding{font-size:clamp(16px,1.25vw,19px);font-weight:400;line-height:1.65}
+.wordmark{font-weight:500;letter-spacing:.005em}.ray strong{font-weight:500;letter-spacing:0}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2,nav strong,.offering-grid h3,.story-offers h3{font-weight:750;letter-spacing:-.04em}
+@media(min-width:721px) and (max-width:1050px){.hero .copy h1{font-size:clamp(40px,5.3vw,58px)}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(43px,10vw,70px);line-height:1.02}.world-copy h1,.about-content h1{font-size:clamp(41px,9.5vw,64px)}}
+
+/* Readable, sensuous editorial direction: open shapes and relaxed spacing. */
+:root{font-family:'DM Sans',Arial,sans-serif;--display:'Lora',Georgia,serif}
+h1,h2,h3,nav strong,.hero .copy h1,.world-copy h1,.about-content h1{font-family:var(--display);font-weight:700;font-variation-settings:normal;letter-spacing:-.028em}
+.hero .copy h1{font-size:clamp(43px,4.85vw,78px);font-weight:700;line-height:1.12;letter-spacing:-.035em;text-wrap:initial}
+.hero .copy h1 em{font-weight:600;font-style:normal;color:#78634e}
+.copy .philosophy,.copy .grounding,.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer,.ray,.ray strong,.wordmark{font-family:'DM Sans',Arial,sans-serif}
+.copy .philosophy{font-size:clamp(14px,1.2vw,18px);font-weight:500;line-height:1.6}
+.copy .grounding{font-size:clamp(15px,1.18vw,18px);line-height:1.75;max-width:440px}
+.ray strong{font-weight:600;letter-spacing:0}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2,nav strong,.offering-grid h3,.story-offers h3{font-weight:600;letter-spacing:-.025em;line-height:1.15}
+.world-copy h1,.about-content h1{line-height:1.1}
+@media(min-width:721px) and (max-width:1050px){.hero .copy h1{font-size:clamp(35px,4.75vw,51px)}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(36px,8.8vw,60px);line-height:1.12}.world-copy h1,.about-content h1{font-size:clamp(36px,8.8vw,58px);line-height:1.12}}
+
+/* Approved direction 3: one cohesive Outfit typography system. */
+:root{font-family:Outfit,Arial,sans-serif;--display:Outfit,Arial,sans-serif}
+body,button,input,textarea,a,.wordmark,.copy .philosophy,.copy .grounding,.eyebrow,.instruction,.caption,.story-kicker,.header-links,#menu,footer,.ray,.ray strong,.ray small,nav span,.story-action,.world-action,.back-link,.cross-links span,.paper span,.paper small{font-family:Outfit,Arial,sans-serif}
+h1,h2,h3,nav strong,.hero .copy h1,.world-copy h1,.about-content h1{font-family:Outfit,Arial,sans-serif;font-weight:800;letter-spacing:-.035em;font-variation-settings:normal}
+.hero .copy h1{font-size:clamp(44px,5.15vw,84px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+.hero .copy h1 em{font-family:inherit;font-weight:500;font-style:normal;color:#88674e}
+.copy .philosophy{font-size:clamp(15px,1.2vw,18px);font-weight:500;line-height:1.6}
+.copy .grounding{font-size:clamp(16px,1.25vw,19px);line-height:1.65;font-weight:400}
+.wordmark{font-weight:600;letter-spacing:-.02em}
+.ray strong{font-weight:500;letter-spacing:0}
+.path-intro h2,.deck-feature h2,.featured h2,.world-content h2,.story-intro h2,nav strong,.offering-grid h3,.story-offers h3{font-weight:700;letter-spacing:-.025em;line-height:1.15}
+@media(min-width:721px) and (max-width:1050px){.hero .copy h1{font-size:clamp(36px,4.8vw,54px)}}
+@media(max-width:720px){.hero .copy h1{font-size:clamp(38px,9vw,63px);line-height:1.08}.world-copy h1,.about-content h1{font-size:clamp(38px,9vw,60px)}}
+
+/* Legible supporting typography, including the interactive prism controls. */
+.eyebrow{font-size:14px;letter-spacing:1.8px}
+.instruction{font-size:15px;letter-spacing:.2px;line-height:1.65}
+.instruction small{font-size:14px;letter-spacing:0}
+.crystal-cue strong{font-family:Outfit,Arial,sans-serif;font-size:16px;letter-spacing:0}
+.crystal-cue small{font-family:Outfit,Arial,sans-serif;font-size:14px}
+.ray{gap:8px;min-height:54px}
+.ray strong{font-size:clamp(15px,1.2vw,19px);line-height:1.2}
+.ray small{font-size:clamp(13px,1vw,16px);line-height:1.3}
+.header-links,#menu{font-size:15px;letter-spacing:.5px}
+.story-kicker,.caption,.cross-links span{font-size:13px;letter-spacing:1.4px}
+nav button .path-arrow,.back-link,.story-back{font-size:14px}
+nav button span,.featured p,.path-intro p{font-size:16px}
+.story-action,.world-action{font-size:15px}
+footer{font-size:13px;letter-spacing:1px;line-height:1.5}
+.deck-art small{font-size:12px;letter-spacing:.7px}
+@media(max-width:720px){.eyebrow{font-size:13px}.header-links,#menu{font-size:12px}.header-links{gap:10px}.instruction,.instruction small{font-size:14px}.ray strong{font-size:14px}.ray small{font-size:12px}.crystal-cue strong{font-size:14px}.crystal-cue small{font-size:12px}.deck-art small{font-size:10px}footer{font-size:12px}}
+
+/* Larger reading scale across the main site; preserve all H1 headline sizing. */
+body{font-size:18px}
+.copy .philosophy{font-size:clamp(18px,1.45vw,22px);line-height:1.55}
+.copy .grounding{font-size:clamp(19px,1.5vw,23px);line-height:1.6;max-width:490px}
+.eyebrow{font-size:16px;letter-spacing:1.5px}
+.instruction,.instruction small{font-size:17px;line-height:1.55}
+.crystal-cue strong{font-size:18px}.crystal-cue small{font-size:16px}
+.ray strong{font-size:clamp(17px,1.4vw,22px);line-height:1.2}
+.ray small{font-size:clamp(15px,1.15vw,18px);line-height:1.25}
+.ray{min-height:58px;gap:7px}
+.header-links,#menu{font-size:17px}.wordmark{font-size:27px}
+.story-kicker,.caption,.cross-links span{font-size:15px;letter-spacing:1.1px}
+.path-intro h2{font-size:38px}.featured h2{font-size:43px}
+.deck-feature h2{font-size:clamp(34px,4.5vw,62px)}
+nav strong{font-size:clamp(24px,2.7vw,39px)}
+nav button span,.featured p,.path-intro p,.deck-feature p{font-size:19px;line-height:1.55}
+nav button .path-arrow,.back-link,.story-back{font-size:16px}
+.story-action,.world-action,.offering-grid a{font-size:18px}
+.world-copy p,.about-content p{font-size:22px;line-height:1.65}
+.world-content h2{font-size:48px}.offering-grid h3,.story-offers h3{font-size:34px}
+.offering-grid p,.story-offers p,.story-offers li{font-size:19px;line-height:1.65}
+.story-price{font-size:32px}.story-privacy,.story-offers .story-note{font-size:16px}
+textarea{font-size:18px}.cross-links{font-size:19px}
+footer{font-size:15px;letter-spacing:.6px}
+.deck-art small{font-size:14px}
+@media(min-width:721px){.hero{min-height:650px;height:clamp(650px,82vh,920px)}.copy{padding-top:34px;padding-bottom:34px}.copy .instruction{margin-top:20px}}
+@media(max-width:720px){.copy .philosophy{font-size:18px}.copy .grounding{font-size:18px;line-height:1.6}.eyebrow{font-size:14px}.header-links,#menu{font-size:14px}.wordmark{font-size:20px}.instruction,.instruction small{font-size:16px}.hero .optics{height:415px}.ray strong{font-size:16px}.ray small{font-size:14px}.crystal-cue strong{font-size:16px}.crystal-cue small{font-size:14px}.ray{min-height:48px}.world-copy p,.about-content p{font-size:19px}.offering-grid p,.story-offers p,.story-offers li{font-size:18px}.deck-art small{font-size:11px}footer{font-size:14px}}
+
+/* Blue redstart colour exploration, inspired by the supplied image. */
+:root{color:#12334E;background:#F8F3F2;--ink:#12334E;--raspberry:#A21E49;--mauve:#815366}
+body{background:#F8F3F2;color:var(--ink)}
+header{background:#F8F3F2;border-color:#B88F9B38}
+.hero{background:radial-gradient(ellipse at 12% 12%,#FFFCFB 5%,transparent 65%),linear-gradient(118deg,#F8F3F2 20%,#F0E2E7 61%,#DCE8F1)}
+.hero .copy h1{color:#10334F}.hero .copy h1 em{color:#9B254D}
+.copy .philosophy{color:#6B4660}.copy .grounding,p{color:#344B5C}
+.eyebrow,.instruction,.caption,.crystal-cue,.crystal-cue small,.story-kicker,.ray small{color:#735269}
+.eyebrow i{background:#A21E49}
+.optics::before{border-color:#65839E50;box-shadow:inset 0 0 0 7px #fff5,inset 0 0 0 8px #A77C9135}
+.ray{color:#12334E}.ray.illuminated strong,.ray.illuminated span{color:var(--tone)}
+.path-intro,nav{background:#F8F3F2}nav{border-color:#B88F9B40}nav button{border-color:#B88F9B40}nav button span{color:#344B5C}
+.deck-feature{background:#E8EFF5}.deck-art{background:#12334E;color:#F6D7BB;border-color:#BFA27A}
+.featured{background:#F0DDE4;color:#12334E}
+.story-action,.world-action{background:#A21E49;color:#fff}.story-action:hover,.world-action:hover{background:#7E1538}
+.story-action.secondary{background:transparent;color:#872041;border-color:#872041}
+.story-section{background:linear-gradient(130deg,#FFFAFB,#E8D5DE)}.story-intro h2 em,.story-price{color:#A21E49}
+.world-content{background:#F8F3F2}.offering-grid article,.story-offers article{background:#FFFDFD;border-color:#B88F9B66}
+footer{background:#12334E;color:#F4E3E8}
+#pause{border-color:#73526966;background:#fff9}
+button:focus-visible,a:focus-visible{outline-color:#A21E49}
+
+/* Living etchings: original Soulphoria artwork, with a localized reveal of colour. */
+.living-art{position:relative;isolation:isolate;overflow:hidden;min-height:420px;display:flex;align-items:center;justify-content:center;--x:50%;--y:45%;--inktone:#315A89;--accent:#CBA777;--veil:0;cursor:default;background:transparent!important}
+.living-art[data-art="become"]{--inktone:#735269;--accent:#CBA777}
+.living-art[data-art="storykeeper"]{--inktone:#A21E49;--accent:#CBA777;min-height:480px}
+.living-art[data-art="create"]{--inktone:#426D8A;--accent:#CBA777}
+.living-art .art-ink,.living-art .art-light{position:absolute;inset:7% 10% 12%;background-image:var(--image);background-position:center;background-repeat:no-repeat;background-size:contain;pointer-events:none;mix-blend-mode:multiply}
+.living-art .art-ink{filter:contrast(1.04) sepia(.22) hue-rotate(160deg);opacity:.94;transition:transform .6s ease,opacity .6s ease}
+.living-art[data-art="become"] .art-ink{filter:sepia(.38) hue-rotate(275deg)}
+.living-art[data-art="storykeeper"] .art-ink{filter:sepia(.5) hue-rotate(295deg)}
+.living-art[data-art="create"] .art-ink{filter:sepia(.32) hue-rotate(155deg)}
+.living-art .art-light{background-color:var(--accent);background-blend-mode:screen;mask-image:radial-gradient(ellipse 35% 36% at var(--x) var(--y),#000 2%,#0009 40%,transparent 100%);opacity:0;transition:opacity .65s ease}
+.living-art.is-lit .art-light,.living-art:focus-visible .art-light{opacity:.95}
+.living-art.is-lit .art-ink{transform:scale(1.025)}
+.living-art[data-art="become"].is-lit .art-ink{opacity:1;transform:none}
+.living-art[data-art="create"] .art-light{mask-image:radial-gradient(ellipse 45% 42% at var(--x) var(--y),#000 5%,#0008 44%,transparent 100%)}
+.living-art span{position:absolute;bottom:3%;left:0;right:0;text-align:center;color:var(--inktone);font-size:13px;letter-spacing:1.4px}
+.living-art:focus-visible{outline:2px solid var(--accent);outline-offset:-5px}
+@media(max-width:720px){.living-art,.living-art[data-art="storykeeper"]{min-height:340px}.living-art .art-ink,.living-art .art-light{inset:4% 6% 10%}}
+@media(prefers-reduced-motion:reduce){.living-art .art-ink,.living-art .art-light{transition:none!important;transform:none!important}}
+ .living-art .original-etching{position:absolute;inset:5% 10% 10%;width:80%;height:85%;object-fit:contain;mix-blend-mode:multiply;filter:sepia(.18);transition:transform .6s ease;pointer-events:none}.living-art.is-lit .original-etching{transform:scale(1.025)}.living-art .art-light{background:radial-gradient(ellipse 28% 32% at var(--x) var(--y),#d6b78255,transparent);mask-image:none;mix-blend-mode:soft-light;inset:0}.living-art::before{display:none}.living-art span{bottom:2%;right:0}@media(prefers-reduced-motion:reduce){.living-art .original-etching{transition:none;transform:none!important}}.living-art .original-etching{mix-blend-mode:multiply;filter:none!important;background:none!important}.literary-library,.literary-book{padding:clamp(24px,5vw,65px);max-width:1180px;margin:30px auto;color:#12334E}.literary-library h2,.literary-book h2{font-size:clamp(32px,4vw,50px);line-height:1.15;margin:12px 0}.literary-lead{font-size:20px;max-width:720px}.reading-list{border-top:1px solid #b88f9b66;margin-top:28px}.reading-list article{border-bottom:1px solid #b88f9b66}.reading-list summary{cursor:pointer;list-style:none;padding:24px 0;position:relative}.reading-list summary::-webkit-details-marker{display:none}.reading-list summary span,.literary-note{font-size:14px;color:#536278}.reading-list summary h3{font-size:26px;margin:7px 0}.reading-list summary p{font-size:18px;margin:0 0 8px}.reading-list summary b,.literary-link{font-size:16px;color:#A21E49;text-decoration:underline;text-underline-offset:4px}.reading-body{max-width:720px;padding:8px 0 30px;font-size:19px;line-height:1.75}.reading-body blockquote,.literary-book blockquote{border-left:2px solid #B68E51;padding:12px 20px;margin:16px 0;font-size:22px;font-style:italic}.literary-book{background:#E3EBF3;border-radius:8px}.literary-book p{max-width:750px;font-size:18px}.literary-book .book-subtitle{font-weight:600;font-size:21px}.literary-book cite{display:block;font-size:15px;margin-top:12px;font-style:normal}.literary-actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:24px}.literary-note{line-height:1.5}.literary-book .literary-note{font-size:14px}.reading-list summary:focus-visible,.literary-link:focus-visible{outline:2px solid #A21E49;outline-offset:5px}@media(max-width:720px){.literary-library,.literary-book{margin:20px 12px;padding:25px}.reading-list summary h3{font-size:23px}}
+/* Unified, larger living etchings with visible responsive gold ink. */
+.world-hero{grid-template-columns:1fr 1fr}
+.story-section{grid-template-columns:1fr 1fr}
+.living-art,.living-art[data-art="storykeeper"]{height:clamp(520px,44vw,660px);min-height:520px;align-self:center;isolation:isolate;perspective:1000px;cursor:crosshair;--tilt-x:0deg;--tilt-y:0deg}
+.living-art .original-etching,.living-art .etching-colour{position:absolute;inset:2% 3% 12%;width:94%;height:86%;object-fit:contain}
+.living-art .original-etching{mix-blend-mode:multiply}
+.living-art.art-ready .original-etching{visibility:hidden}
+.living-art .art-light{display:none}
+.living-art .etching-colour{z-index:2;pointer-events:none;background:var(--inktone);mask-image:var(--art-mask);-webkit-mask-image:var(--art-mask);mask-position:center;-webkit-mask-position:center;mask-size:contain;-webkit-mask-size:contain;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;transform:rotateX(var(--tilt-x)) rotateY(var(--tilt-y));transition:transform .22s ease-out}
+.living-art.is-lit .etching-colour{background:radial-gradient(ellipse 31% 29% at var(--x) var(--y),#A87524 0%,#C4974B 38%,var(--inktone) 94%)}
+.living-art .etching-cue{position:absolute;z-index:3;bottom:4%;left:50%;transform:translateX(-50%);border:1px solid #b68e5166;border-radius:30px;background:transparent;color:var(--inktone);padding:8px 18px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.living-art .etching-cue:focus-visible{outline:2px solid var(--inktone);outline-offset:3px}
+.living-art span{display:none}
+@media(max-width:900px){.world-hero,.story-section{grid-template-columns:1fr}.living-art,.living-art[data-art="storykeeper"]{height:clamp(390px,95vw,540px);min-height:390px}.living-art .original-etching,.living-art .etching-colour{inset:2% 3% 12%;width:94%;height:86%}}
+@media(prefers-reduced-motion:reduce){.living-art .etching-colour{transform:none!important;transition:none!important}}
+.literary-book{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,56px)}.book-cover-link{display:block;width:100%;max-width:240px;margin:auto}.book-cover-image{display:block;width:100%;height:auto;object-fit:contain;box-shadow:8px 14px 28px #12334e28}.book-copy{min-width:0}@media(max-width:650px){.literary-book{grid-template-columns:1fr}.book-cover-link{max-width:180px;margin:0 auto 12px}}
+/* Separate mobile preview. Original desktop index.html remains unmodified. */
+.mobile-preview-hero{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;max-width:640px;margin:auto;overflow:visible}
+.mobile-preview-hero .copy{padding:35px 24px 8px!important;text-align:left!important;max-width:none!important}
+.mobile-preview-hero .copy h1{font-size:clamp(36px,9vw,54px)!important;line-height:1.04!important;margin:12px 0 14px!important;text-wrap:balance}
+.mobile-preview-hero .copy .philosophy{font-size:20px!important;line-height:1.35}
+.mobile-preview-hero .copy .grounding{font-size:17px!important;line-height:1.55;margin:12px 0 0!important}
+.mobile-preview-hero .instruction,.mobile-preview-hero .orbit,.mobile-preview-hero .crystal-cue{display:none!important}
+.mobile-preview-hero .optics{height:clamp(280px,83vw,430px)!important;min-height:0!important;width:100%;touch-action:pan-y!important;overflow:hidden}
+.mobile-preview-hero .optics canvas{touch-action:pan-y!important;width:100%;height:100%}
+.mobile-preview-hero .optics::before{inset:6% 19% 7%!important}
+.mobile-preview-hero #pause{width:44px;height:44px;right:16px;bottom:12px}
+.mobile-discovery{padding:0 24px 28px;text-align:center;color:#12334e}
+.mobile-swipe-hint{font-size:15px;color:#735269;margin:0 0 10px}
+#mobile-colours{display:flex;justify-content:center;gap:16px;margin:8px auto 18px}
+#mobile-colours button{width:48px;height:48px;min-width:48px;border:2px solid transparent;background:none;border-radius:50%;padding:7px;cursor:pointer;touch-action:manipulation}
+#mobile-colours button i{display:block;background:var(--swatch);width:100%;height:100%;border-radius:50%}
+#mobile-colours button[aria-pressed="true"]{border-color:var(--swatch)}
+#mobile-colours button:focus-visible,#mobile-explore:focus-visible,.mobile-all:focus-visible{outline:2px solid #a21e49;outline-offset:4px}
+.mobile-path{min-height:205px;padding:22px 18px;background:var(--mobile-wash,#e3ebf3);border-radius:12px;border:1px solid #12334e15}
+#mobile-identity{font-size:13px;font-weight:600;letter-spacing:1.4px;color:var(--mobile-tone,#315a89);text-transform:uppercase;margin:0 0 6px}
+#mobile-name{font-size:clamp(24px,6vw,32px);line-height:1.14;margin:0 0 10px}
+#mobile-description{font-size:17px;line-height:1.45;margin:0 auto 12px;max-width:390px}
+#mobile-explore{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 22px;background:#12334e;color:white;border-radius:6px;text-decoration:none;font-size:17px}
+.mobile-all{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:10px;color:#12334e;text-decoration:underline;text-underline-offset:4px;font-size:16px}
+#all-pathways{scroll-margin-top:18px}
+@media(min-width:641px){.mobile-preview-hero{border-left:1px solid #12334e15;border-right:1px solid #12334e15}}
+@media(max-width:640px){header{padding:14px 16px!important;gap:8px}.header-links{gap:10px!important}.wordmark{font-size:clamp(17px,4.8vw,22px)!important}.header-links a,#menu{font-size:14px!important;min-height:44px;display:inline-flex;align-items:center}#menu{padding:5px 8px!important}.world-copy{padding:30px 22px!important}.living-art,.living-art[data-art="storykeeper"]{min-height:340px;height:clamp(340px,100vw,470px)}.deck-feature,.featured{padding:26px 20px!important} .story-section{padding:32px 20px!important} .literary-library,.literary-book{padding:22px!important}}
+@media(prefers-reduced-motion:reduce){.mobile-preview-hero *{animation:none!important;transition:none!important}}
+</style>
+  <script src="./art-explore.js?v=27"></script>
+<script src="./art-become.js?v=27"></script>
+<script src="./art-storykeeper.js?v=27"></script>
+<script src="./art-create.js?v=27"></script>
+<script src="./book-cover.js?v=1"></script>
+</head>
+  <body>
+    <div id="app">
+      <header>
+        <a class="wordmark" href="#">Alessandra <span>Sagredo</span></a
+        ><div class="header-links"><a href="#about">About</a><button id="menu">Find your path <span>✳</span></button></div>
+      </header>
+      <main>
+<div id="home-view">
+        <section class="hero mobile-preview-hero">
+          <div class="copy">
+            <div class="eyebrow"><i></i> FOR THE CURIOUS</div>
+            <h1>Discover the extraordinary <em>in being human.</em></h1>
+            <p class="philosophy">Exploring what is. Revealing what could be.</p><p class="grounding">Indulge your curiosity. Explore the mysteries of existence, the exquisite pleasure of being alive and the delicious uncertainty of what comes next.</p>
+            <div class="instruction">
+              <span>↔</span> Turn the crystal. See what it reveals.<br /><small
+                >Choose any colour to explore</small
+              >
+            </div>
+          </div>
+          <div class="optics">
+            <canvas
+              id="crystal" tabindex="0"
+              aria-label="Interactive crystal. Move your pointer, drag, or use the left and right arrow keys to turn it."
+            ></canvas>
+            <div class="orbit" id="orbit"></div>
+            <div class="crystal-cue" id="crystal-cue" aria-hidden="true"><svg viewBox="0 0 104 24" width="104" height="24" fill="none"><path d="M8 12C22 1 82 1 96 12M8 12l10-1M8 12l4-8M96 12l-10-1M96 12l-4-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 17Q52 23 67 17" stroke="currentColor" stroke-width=".8" opacity=".45"/></svg><strong>Turn the crystal</strong><small>Drag to reveal the light</small></div>
+            <button id="pause" aria-label="Pause rotation">Ⅱ</button>
+          </div>
+          <div class="mobile-discovery"><p class="mobile-swipe-hint">Swipe to turn the crystal</p><div id="mobile-colours" role="group" aria-label="Choose a pathway"></div><div class="mobile-path" id="mobile-path"><p id="mobile-identity"></p><h2 id="mobile-name"></h2><p id="mobile-description"></p><a id="mobile-explore" href="#explore">Explore this world →</a></div><a class="mobile-all" href="#all-pathways">View all four pathways ↓</a></div>
+        </section>
+        <div class="path-intro" id="all-pathways"><h2>Follow your curiosity.</h2><p>Begin wherever your curiosity takes you.</p></div><nav id="worlds" aria-label="Explore the worlds"></nav><section class="deck-feature"><div class="deck-art" aria-hidden="true"><div><img class="soul-emblem" src="data:image/webp;base64,UklGRhAHAABXRUJQVlA4WAoAAAAQAAAARQAAYAAAQUxQSMECAAART6CmbQM2VRK90hERoZI/vUFn2zY1bvXOYjtmu5scPl04u53ZVmeGLpyoM9vqzNaUS9K8v1fSQKCP6P8E4Pct//hjPJD8/JSm6bfJEAtP+3+Ojb38nK4Jb5vp3yhVD+u+5q/qqJT37/yopwYsZdb0cj8N6+ex8PChA8fbGTf5TbiotON03IJzroXLN7hnGo7vZzx8SIXDvfCAfstOxfA5H9kdp8IHHoXV+ajhpd+0UbOjtpf3szZHzbzrRXVt7kQee8GlzT4y1rw8iCo1ixHbXvr1qo02+ux66TWqrhsypxY+rv+tuhWKZMvHUVx1BmnIyEc/qfoKZCTrHkZx1RowINnxkHWrOsCIpK47KVMlKxg5vafFf0C/wKbLMOlYbZTEwu65OfzPSpXwvzJZcsP12aqOha4XXjy+ASBzLrcrsAYgK2EE4MyQArhjfNSs2gNwXMYm5kkmwHPDVr9WdQ5AmrIItyQ1cEctLlB9JwCclHFyQJLN54aJ6lrc1AHIvEybQjQiedm2eN8CgAr7msXzucJtGOwXZO6mhc1AAFDG7RC2Ry0AuHebsVLdwsCtZYX7FQFsuv1vd8TvE9hwO3Sh3n9lnBK7eSaP9OiA7cf6Yu4WO2D+u1Bnpko/FSIXfDwQePG57GDiuSE564TT75OYL4kFZKHlhq2nq7wQ1YB7kmx4gFpa/ny++1cN+ECSWviwzUomgjxnqV6rBXhfRsa1H4CRv3kLLbwpG3g/Irn3UIj8DclYGZK64U0acmZIUk/C+wapt0jqKfgfkOs5qSfhXxryiTyoI+AxSeq3AiEzkskkgm6RTOoIKc9IsoGg8ynJLgJ/IHU9VEZOI/AG2UHoPhMRLOd/CP2crAc7YoTgAzbD5TGCz3Mm3K2uBds0EULLnO1wRteCIY8QXJpWuHktwr2PEH7j/x9ART8A/vgRfmIAVlA4ICgEAAAwFQCdASpGAGEAPtFWo00oJCMiLbZsyQAaCWQAzjCzxm3O7YDnj/TFvQG8+4Bv2Od+dge0stzlo6TtnHeXJOnpN2/328ktA5d0VtCUlC7H643LpAwUSt75jTTGvRZzZOM9hCZCwOln/TeFNsYljleawQhAiWU8WvyP1TrJSNYJOV8/BHqsf0S1hPus8EVd/iw6u8z15loSKm1CINXhf8r2oB3QhrAokuse7E/eF4rAKCdAAP71Of/90z/958P/94NGDFbqPDBZ+/ydgBL2Xp6FYgVwrwqPKVU5mK9gQML77qsJL8/kxv/49ixW46aeNMZAXgi5Bb1tjWOlS9cvTzIifjnSsTP2/snLTQMEFwBcB15nJ6YWV2/Y45bN9HIueQvtyydln55MLeD+cowLhxKyBKCjA8mlEBSzqAHkQf9vdAq7kC04rp+uap+8NCWmtH9xGKWL0gu1XNSiIbOo/5kp4Ew3ihcgKITYJKqaddAbnEnDkFYzsJF9hsFDuL8QtcOjhZEc1taqN7pyYL9ITvO3DwRVo0tUxq6+P/AJm+cza+HgJX3AxWYnoH2ER82GvBrEsMEbYwK4d9mx3gx0Jo1S8cMlLjixmZAxpVhkTWV0niA6mwAt1OkEFnTUvLhp1UBfE3D2+MtGnhRMzeEku/RFs4fK3nfvnewD+ZobPz9s9C6BqaXAJhBPVOBYdjlc4i9Nzzlsl9ML0C8AMjdl+OLfiie82GFhdCJgpGVN+aa3wsX/uIZHER8k2j0WOJ3qs1hiuwPkuB2WnY4f0H87jzrAt/DVijBUVHJpkVF/KfKSjF/46yd8pJb63jyKONqr2ivfgM+ASg/kUNxld2fJp7KnUAx2Wh7h5c9q6GSbixymIweWpJrHNq6/3f7hCqstBr95azEXxdvTZw8hGsxzX+lCq59+35qZoSkCTyqH+y67+lfH7sZgTY/Ah0ktFET57URTDP8nY3d2Ry8kmRtyEPR1/wTCsx4Oapriwt04yvXPX8jVIx1hm1A58KSQIiSL5TjUQhyo4zfvRtcZk8++QmO1R5SElE1bsYCUHGfrVfkS/A7cXRHpLFumgHN7RC01zm+9Mu29r5VoyhmZLAZJFjQs9IP1BR+6gtOtS49XrlX+Ot0p4xmQvOQ/X8v//aEC8gdLmoPEvbQDRSuSr9hgTLraToYXwEYHDWDAnqD0o8YtFwn/0kF0Apc7bZKUO+q32aHVpXLhyHj2VITa7I0grPwzANiZ4eHs5whNDQbzGlFMps7ZRuXL8TQehBH1H8eMRWob8OgUzeCqd8JBNpzHg2Qwf/1gqYvhsmLgFncsBf3moaT6WUM0lsEOk3yPUpLNDw8h635mlK3Mnj0HvK/qFKw9ZO6t1M7LWwokCObXwMMr+zKd0+CkHHeDlqUkQpp7FpeVlVkAAAAAAA==" alt="" /><br><small>SOULPHORIA</small><br><small>A MOMENT OF</small><br>Possibility<br>✧</div></div><div><div class="story-kicker">A LITTLE UNEXPECTED INSPIRATION</div><h2>A Moment of Possibility</h2><p>Something to ponder. Something to play with. Something you might not have considered.</p><a class="story-action" href="./possibility.html">Draw a card →</a></div></section><section class="featured"><div><div class="story-kicker">THE STORYKEEPER</div><h2>Stories Worth Keeping</h2><p>Bring one memory you would love to preserve. You needn't be a writer. Join me online for free or in person in Peachland ($30 CAD). Dates to be announced.</p></div><a class="story-action" href="#storykeeper">Discover the workshops →</a></section></div><section id="world-page" hidden></section>
+<section hidden id="storykeeper" class="story-section"><div class="story-intro"><a class="back-link" href="#">← Return to the prism</a><div class="story-kicker">THE STORYKEEPER</div><h2>Stories Worth <em>Keeping.</em></h2><p>Of all the stories you've lived, which would you love someone else to know? Perhaps a rather ridiculous adventure from your youth, the story of how you fell in love, or a moment that changed the course of your life.</p><a class="story-action" href="#workshop">Discover the workshops ↓</a></div><div class="story-book living-art" data-art="storykeeper" tabindex="0" role="img" aria-label="Embodying the Soul, original Soulphoria illustration; move your pointer or tap to reveal colour"><img class="original-etching" id="story-etching" alt=""><div class="art-light"></div></div><div class="story-offers" id="workshop"><article><div class="story-kicker">ONLINE</div><h3>Bring a memory.</h3><div class="story-price">Free</div><p>60 minutes · 12–15 participants. Guided storytelling, prompts and a story outline. No writing experience necessary.</p><p>Next date to be announced.</p><a class="story-action" href="mailto:alessandra@soulphoria.ca?subject=Online%20storytelling%20interest">Express interest ↗</a></article><article><div class="story-kicker">PEACHLAND · IN PERSON</div><h3>A creative gathering.</h3><div class="story-price">$30 CAD</div><p>90 minutes · 8–12 participants. Guided workbook, story outline and an intimate creative gathering.</p><p>Venue and date to be announced.</p><a class="story-action" href="mailto:alessandra@soulphoria.ca?subject=Peachland%20storytelling%20interest">Express interest ↗</a></article><article><div class="story-kicker">COMMISSIONED STORYTELLING</div><h3>A Memory, Preserved</h3><div class="story-price">$147 CAD</div><p>Introductory price. A beautifully written 800–1,200-word personal story, personalized cover, your photographs, professional layout and one revision. Delivered as a printable digital keepsake.</p><a class="story-action" href="mailto:alessandra@soulphoria.ca?subject=Personal%20story%20commission">Enquire about a commission ↗</a></article><article><div class="story-kicker">A LITTLE DISCOVERY</div><h3>Somewhere in your memories...</h3><p id="memory-prompt">What curious little moments have you tucked away?</p><button class="story-action" id="memory-draw">Discover a memory</button><p><textarea id="memory-notes" rows="5" placeholder="A few words, a feeling, a recollection..." aria-label="Private recollection"></textarea></p><button class="story-action secondary" id="memory-save">Save recollection as text</button><p class="story-note">Your notes stay in this page unless you save them. No submission or account required.</p></article></div><p class="story-privacy">Your story is yours. Share only what you are comfortable discussing. Dates and commissions are enquiries only, not confirmed bookings.</p><a class="story-back" href="#">← Return to the prism</a></section>
+        <footer>
+          <span><a href="#about">ABOUT ALESSANDRA</a></span
+          ><span><a href="https://cal.com/exhaleconsulting">BUSINESS ADVISORY | EXHALE</a></span>
+        </footer>
+      </main>
+      
+    </div>
+    <script type="module">const pages = [{"slug":"explore","name":"Consciousness & intuition","identity":"The Mystic","tone":"#315A89","wash":"#E3EBF3","short":"Explore mysticism, intuition and the nature of consciousness.","headline":"What if reality is far stranger than we imagine?","intro":"I love all things mystic. The inexplicable, the intuitive, the old gods. What frustrates me about spirituality is dogma and the giving away of one's own power. Through Soulphoria, my writing and workshops, I invite you to explore consciousness and question what you think you know. You needn't share my beliefs.","art":"orbit","cta":"Explore Soulphoria","href":"https://soulphoria.ca","offers":[["Spiritual courses","Explore consciousness and spiritual practice through courses and practical exercises. Enquire about upcoming courses."],["Experiential workshops","Experiment with spiritual practices, reflect on your experiences and exchange ideas with others who are equally curious."]]},{"slug":"become","name":"Life, change & mortality","identity":"The Threshold Guide","tone":"#735269","wash":"#F0E1E7","short":"Explore reinvention, identity, living and dying.","headline":"What a peculiar thing it is to be alive.","intro":"We experience exquisite pleasure and extraordinary pain, reinvent ourselves along the way and, while we're still living, obsess over what comes next. I'm fascinated by reincarnation, the journey between this life and the next, and the many beliefs surrounding what we experience at death. Through Act II and End of Life Help, I explore the thresholds we encounter in life and in dying.","art":"door","cta":"Ask about upcoming workshops","subject":"Life transition workshop enquiry","offers":[["Act II","What would you like to do with this next piece of your life? Act II is an exploration of identity and reinvention for anyone entering a new phase."],["End of Life Help","Explore death, dying and meaningful living through education and workshops. There is also room to be curious about what may lie beyond death, whatever your beliefs."]],"extra":"https://endoflifehelp.ca"},{"slug":"storykeeper","name":"Stories & memories","identity":"The Storykeeper","tone":"#A21E49","wash":"#F5E1E6","short":"Preserve the stories that matter to you.","intro":"Stories Worth Keeping","offers":[]},{"slug":"create","name":"Literature & art","identity":"The Creatress","tone":"#426D8A","wash":"#E1EAF0","short":"Discover fiction, poetry, books and art.","headline":"I create in everything I do.","intro":"I like to bring more beauty and life to each moment. Sometimes that takes the form of a book, a poem or a piece of art. Sometimes it's simply the way I choose to experience the world. Come explore some of the things I've created.","art":"book","cta":"Explore published work","href":"https://soulphoria.ca","offers":[["Author & artist portfolio","For literary agents and creative collaborators: please enquire about my manuscripts and artwork. My full portfolio is not yet available here."]]}];
+const data = pages.map(p => [p.name,p.identity,p.short,p.intro,p.tone,p.wash]);
+const nav = document.querySelector('#worlds');
+const orbit = document.querySelector('#orbit');
+const home = document.querySelector('#home-view');
+const world = document.querySelector('#world-page');
+const story = document.querySelector('#storykeeper');
+const mail = subject => 'mailto:alessandra@soulphoria.ca?subject=' + encodeURIComponent(subject);
+const illustrations = {
+ architecture: '<path d="M40 275V100L135 48V275M135 48L230 100V275M230 100L320 48V275M40 275H350M135 140L230 195M230 195L320 140" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M70 245V125L110 103V245ZM253 245V112L295 88V245Z" fill="currentColor" opacity=".12"/>',
+ orbit: '<g fill="none" stroke="currentColor"><circle cx="195" cy="160" r="98"/><ellipse cx="195" cy="160" rx="145" ry="52" transform="rotate(-35 195 160)"/><ellipse cx="195" cy="160" rx="145" ry="52" transform="rotate(35 195 160)"/><circle cx="195" cy="160" r="35"/></g><circle cx="195" cy="160" r="9" fill="currentColor"/>',
+ door: '<path d="M80 285V140A115 115 0 0 1 310 140V285M105 285V145A90 90 0 0 1 285 145V285M130 285V150A65 65 0 0 1 260 150V285" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M130 285V150A65 65 0 0 1 260 150V285Z" fill="#fff9dc" opacity=".8"/><path d="M130 285L65 320M260 285L325 320" stroke="currentColor" opacity=".4"/>',
+ book: '<g transform="rotate(-9 195 170)"><rect x="100" y="45" width="190" height="250" fill="#fffdf7" stroke="currentColor"/><path d="M115 45V295M138 120H250M138 139H250M138 158H235M138 177H250M138 196H225M138 215H250" stroke="currentColor" opacity=".55"/><path d="M195 67L214 83L195 99L176 83Z" fill="none" stroke="currentColor"/></g>'
+};
+function openWorld(i) { location.hash = pages[i].slug; }
+function pageLinks(current) {
+ return '<div class="cross-links"><span>Discover another path</span>'+pages.filter(p=>p.slug!==current).map(p=>'<a href="#'+p.slug+'">'+p.name+' →</a>').join('')+'</div>';
+}
+const literaryLibrary="<section class=\"literary-library\" aria-labelledby=\"literary-title\"><div class=\"story-kicker\">THE CREATRESS · MUSINGS &amp; MYSTERIES</div><h2 id=\"literary-title\">Something to ponder.</h2><p class=\"literary-lead\">A few thoughts from my world. Read a little, linger a little, and see where your curiosity takes you.</p><div class=\"reading-list\">\n<article><details><summary><span>01 · FROM SOULPHORIA</span><h3>What is Soulphoria?</h3><p>What if spirituality were an exquisite pleasure rather than a discipline?</p><b>Read the excerpt</b></summary><div class=\"reading-body\"><blockquote>“Soulphoria is that moment when your entire spiritual and physical makeup are aligned.”</blockquote><p>From the introduction to <i>Soulphoria</i>, page 1.</p><p>What would it feel like to be fully present in your own life? To experience the physical and the mystical together, without feeling obliged to abandon one for the other?</p></div></details></article>\n<article><details><summary><span>02 · FROM SOULPHORIA</span><h3>The Seduction of the Elements</h3><p>Rediscover the sensual pleasure of the world around you.</p><b>Read the reflection</b></summary><div class=\"reading-body\"><blockquote>“Every synchronicity a wink. Every gut instinct a caress.”</blockquote><p>From Part One, page 18.</p><p>When was the last time you stopped to notice the texture of a flower, or the sensation of the breeze against your skin? The world is full of experiences we hurry past. Try spending a few moments outdoors without a destination or a task. Notice what catches your attention. What changes when you give yourself permission to linger?</p><small>Reflection adapted from pages 17–18.</small></div></details></article>\n<article><details><summary><span>03 · FROM SOULPHORIA</span><h3>The Spiritual Striptease</h3><p>What remains when we undress ourselves of inherited beliefs?</p><b>Read the reflection</b></summary><div class=\"reading-body\"><blockquote>“We remove what makes us remarkable and create a palatable version of ourselves.”</blockquote><p>From Part Three, page 85.</p><p>Consider a belief you have carried since childhood. Did you arrive at it through your own experience, or did someone hand it to you? What might happen if you examined it without the obligation to keep it? There is a certain freedom in discovering which of your beliefs truly belong to you.</p><small>Reflection adapted from Part Three and Practice 18.</small></div></details></article>\n<article><details><summary><span>04 · FROM SOULPHORIA</span><h3>Between Lives</h3><p>Imagine the adventures of a soul before it takes human form.</p><b>Read the reflection</b></summary><div class=\"reading-body\"><blockquote>“She hungered to be a creator. To evolve.”</blockquote><p>From The Story of Angia, page 11.</p><p>In the mythical story of Angia, a soul longs to experience creation and chooses the adventure of human existence. What if we considered life from that imagined perspective? What would you be most curious to experience if you had never inhabited a human body?</p><small>Reflection inspired by the mythical story on pages 11–13.</small></div></details></article>\n<article><details><summary><span>05 · FROM SOULPHORIA</span><h3>A Love Affair with Life</h3><p>Explore the delicious possibilities of being human.</p><b>Read the reflection</b></summary><div class=\"reading-body\"><blockquote>“We Breathe. We Dance. We Feast. We Make Love.”</blockquote><p>From Embodying the Soul, page 41.</p><p>What if the everyday pleasures of being alive deserved as much attention as our spiritual aspirations? Consider one experience you would miss if you no longer had a body. Give yourself a little time to savour it today.</p><small>Reflection inspired by Part Two.</small></div></details></article>\n<article><details><summary><span>06 · FROM SOULPHORIA</span><h3>Must We Kneel Before the Gods?</h3><p>Spiritual sovereignty, reverence and the freedom to question.</p><b>Read the reflection</b></summary><div class=\"reading-body\"><blockquote>“It’s okay to question your beliefs.”</blockquote><p>From Religion, Karma and Sin, page 90.</p><p>Can reverence coexist with the freedom to disagree? What happens when we regard spiritual traditions as invitations to explore rather than obligations to obey? Consider where you place your authority, and whether that choice still feels like your own.</p><small>Reflection inspired by Part Three, pages 88–96.</small></div></details></article></div><p class=\"literary-note\">Brief excerpts from <i>Soulphoria</i> (O-Books, 2022), text copyright Alessandra Sagredo 2021. Reflections are adaptations, not additional book excerpts.</p></section>";
+const literaryBook="<section class=\"literary-book\" aria-labelledby=\"book-title\"><a class=\"book-cover-link\" href=\"https://www.amazon.ca/Soulphoria-Provocative-Practical-Approach-Spirituality-ebook/dp/B09XPNBG4C\" target=\"_blank\" rel=\"noopener noreferrer\"><img class=\"book-cover-image\" alt=\"Soulphoria: A Provocative and Practical Approach to Spirituality by Alessandra Sagredo\" width=\"240\" height=\"360\"></a><div class=\"book-copy\"><div class=\"story-kicker\">PUBLISHED WORKS</div><h2 id=\"book-title\">Soulphoria</h2><p class=\"book-subtitle\">A Provocative and Practical Approach to Spirituality</p><p>Explore mysticism, question inherited beliefs and rediscover the sensual pleasure of being alive. Six parts and thirty practices invite you to experiment with your own spiritual journey.</p><blockquote>“It calls you into the depths of intuitive insight where you can discover the ecstasy of communion with life itself.”<cite>Kim Chestney, author of Radical Intuition</cite></blockquote><div class=\"literary-actions\"><a class=\"world-action\" href=\"https://www.amazon.ca/Soulphoria-Provocative-Practical-Approach-Spirituality-ebook/dp/B09XPNBG4C\" target=\"_blank\" rel=\"noopener noreferrer\">Buy Soulphoria on Amazon ↗</a><a class=\"literary-link\" href=\"./possibility.html#patronage\">Become a patron →</a></div><p class=\"literary-note\">PayPal patronage coming soon.</p></div></section>";
+function showPage(p) {
+ world.style.setProperty('--world-tone',p.tone);
+ world.style.setProperty('--world-wash',p.wash);
+ const primary=p.href||mail(p.subject);
+ const external=primary.startsWith('https:')?' target="_blank" rel="noopener"':'';
+ world.innerHTML='<div class="world-hero"><div class="world-copy"><a class="back-link" href="#">← Return to the prism</a><div class="story-kicker">'+p.name.toUpperCase()+' / '+p.identity.toUpperCase()+'</div><h1>'+p.headline+'</h1><p>'+p.intro+'</p><a class="world-action" href="'+primary+'"'+external+'>'+p.cta+' →</a></div><div class="world-art living-art" data-art="'+p.slug+'" tabindex="0" role="img" aria-label="Original Soulphoria illustration; move your pointer or tap to reveal colour"><img class="original-etching" src="'+(window.soulphoriaArt?.[p.slug]||'')+'" alt=""><div class="art-light"></div><span>'+p.name.toUpperCase()+'</span></div></div><div class="world-content"><div class="story-kicker">EXPLORE FURTHER</div><h2>'+({transform:'Where you can improve results',explore:'Courses & workshops',become:"Life's thresholds",create:'Original writing and art'}[p.slug])+'</h2><div class="offering-grid">'+p.offers.map((o,i)=>'<article><span class="story-kicker">0'+(i+1)+'</span><h3>'+o[0]+'</h3><p>'+o[1]+'</p>'+((p.slug==='create')?'<a href="'+mail('Literary or creative enquiry')+'">Literary & creative enquiries →</a>':(p.slug==='become'&&o[0]==='End of Life Help')?'<a href="https://endoflifehelp.ca" target="_blank" rel="noopener">Visit End of Life Help →</a>':'<a href="'+(p.slug==='explore'?mail('Soulphoria '+o[0]+' enquiry'):mail(o[0]+' enquiry'))+'">Enquire →</a>')+'</article>').join('')+'</div></div>'+pageLinks(p.slug);
+ if(p.slug==='create')world.querySelector('.world-content').insertAdjacentHTML('beforebegin',literaryLibrary+literaryBook);
+ if(p.slug==='explore')world.querySelector('.world-content').insertAdjacentHTML('beforeend',literaryBook);
+}
+function showAbout(){
+ world.style.setProperty('--world-tone','#796b59');world.style.setProperty('--world-wash','#eee5d8');
+ world.innerHTML="<div class=\"about-content\"><a class=\"back-link\" href=\"#\">← Return to the prism</a><div class=\"story-kicker\">ABOUT ALESSANDRA SAGREDO</div><h1>What a curious thing it is to be human.</h1><p class=\"about-lead\">Pain. Pleasure. And the delicious absurdity of it all.</p><p>If life were a lover, I'd describe our relationship in one word. Tumultuous. I'm fascinated by the emotional ups and downs of being human, the sensual nature of our existence and our obsession, while we're still living, with what comes next.</p><p>Why do I do what I do? I'm compelled to. I love all things mystic. I love to inspire others.</p><p>I create in everything I do. I like to bring more beauty and life to each moment. Writing, art, exploring consciousness, helping someone preserve a memory or talking about death are all expressions of that curiosity.</p><p>Perhaps something here will inspire you. Perhaps it will bring you a little relief or joy. That would delight me.</p><p>I'm an author, artist, spiritual practitioner, certified death doula and Chartered Marketer. My business advisory work is through <a href=\"https://cal.com/exhaleconsulting\">Exhale</a>.</p><a class=\"world-action\" href=\"#\">Explore my world →</a></div>"+pageLinks('');
+}
+
+document.getElementById('story-etching').src=window.soulphoriaArt?.storykeeper||'';
+function makeEtchingTransparent(el){
+ const img=el.querySelector('img.original-etching');if(!img||img.dataset.alpha)return;img.dataset.alpha='1';
+ const convert=()=>{if(!img.naturalWidth)return;try{
+ const canvas=document.createElement('canvas');const scale=Math.min(1,1200/Math.max(img.naturalWidth,img.naturalHeight));canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0,canvas.width,canvas.height);const frame=ctx.getImageData(0,0,canvas.width,canvas.height),d=frame.data;
+ let x0=canvas.width,y0=canvas.height,x1=-1,y1=-1;
+ for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++){const i=(y*canvas.width+x)*4;const l=.2126*d[i]+.7152*d[i+1]+.0722*d[i+2];d[i+3]=Math.round(d[i+3]*Math.max(0,Math.min(1,(249-l)/249)));d[i]=255;d[i+1]=255;d[i+2]=255;if(d[i+3]>22){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}}
+ if(x1<x0||y1<y0)return;
+ ctx.putImageData(frame,0,0);const crop=document.createElement('canvas');crop.width=x1-x0+1;crop.height=y1-y0+1;crop.getContext('2d').drawImage(canvas,x0,y0,crop.width,crop.height,0,0,crop.width,crop.height);const alpha=crop.toDataURL('image/png');
+ const ink=el.querySelector('.etching-colour');ink.style.setProperty('--art-mask','url("'+alpha+'")');el.classList.add('art-ready');
+ }catch(e){console.warn('Artwork transparency conversion unavailable',e)}};
+ if(img.complete)convert();else img.addEventListener('load',convert,{once:true});
+}
+function wireLivingArt(){document.querySelectorAll('.living-art').forEach(el=>{
+ if(el.dataset.wired)return;el.dataset.wired='1';
+ const original=el.querySelector('img.original-etching');if(!original)return;
+ const colour=document.createElement('div');colour.className='etching-colour';colour.setAttribute('aria-hidden','true');el.append(colour);
+ const cue=document.createElement('button');cue.type='button';cue.className='etching-cue';cue.textContent='Reveal the light';cue.setAttribute('aria-pressed','false');el.append(cue);
+ const set=(on)=>{el.classList.toggle('is-lit',on);cue.setAttribute('aria-pressed',String(on))};
+ const move=e=>{const b=colour.getBoundingClientRect();if(!b.width||!b.height)return;const x=Math.max(0,Math.min(100,(e.clientX-b.left)/b.width*100)),y=Math.max(0,Math.min(100,(e.clientY-b.top)/b.height*100));el.style.setProperty('--x',x+'%');el.style.setProperty('--y',y+'%');el.style.setProperty('--tilt-x',((50-y)*.065)+'deg');el.style.setProperty('--tilt-y',((x-50)*.065)+'deg');set(true)};
+ el.addEventListener('pointermove',move);el.addEventListener('pointerdown',e=>{if(e.target!==cue)move(e)});
+ el.addEventListener('pointerleave',()=>{set(false);el.style.setProperty('--tilt-x','0deg');el.style.setProperty('--tilt-y','0deg')});
+ cue.addEventListener('click',()=>{const on=cue.getAttribute('aria-pressed')!=='true';el.style.setProperty('--x','50%');el.style.setProperty('--y','43%');set(on)});
+ makeEtchingTransparent(el);
+ });}
+function route(){
+ const hash=location.hash.slice(1);
+ const p=pages.find(x=>x.slug===hash && x.slug!=='storykeeper');
+ const isStory=hash==='storykeeper'||hash==='workshop';
+ const isAbout=hash==='about';
+ home.hidden=!!p||isStory||isAbout;
+ world.hidden=!p&&!isAbout;
+ story.hidden=!isStory;
+ if(p)showPage(p);
+ if(isAbout)showAbout();
+ wireLivingArt();
+ document.querySelectorAll('.book-cover-image').forEach(img=>{if(window.soulphoriaBookCover)img.src=window.soulphoriaBookCover;});
+ document.title=(p?p.name+' | ':isStory?'The Storykeeper | ':isAbout?'About | ':'')+'Alessandra Sagredo';
+ if(hash==='all-pathways')requestAnimationFrame(()=>document.getElementById('all-pathways').scrollIntoView({behavior:'auto'}));
+ else if(isStory&&hash==='workshop')requestAnimationFrame(()=>document.getElementById('workshop').scrollIntoView());
+ else window.scrollTo({top:0,behavior:'auto'});
+}
+window.addEventListener('hashchange',route);
+pages.forEach((p,i)=>{
+ const b=document.createElement('button');
+ b.style.setProperty('--tone',p.tone);
+ b.innerHTML='<i></i><strong>'+p.name+'</strong><span>'+p.short+'</span><span class="path-arrow">Discover this path →</span>';
+ b.onclick=()=>openWorld(i);nav.append(b);
+ const r=document.createElement('button');r.className='ray';r.style.setProperty('--tone',p.tone);
+ r.innerHTML='<i></i><div><strong>'+p.name+'</strong><small>'+p.identity+'</small></div><span>→</span>'; r.addEventListener('pointerenter',()=>active=i);r.addEventListener('pointerleave',()=>active=-1);r.addEventListener('focus',()=>active=i);r.addEventListener('blur',()=>active=-1);r.onclick=()=>openWorld(i);orbit.append(r);
+});
+document.querySelector('#menu').onclick=()=>{
+ if(home.hidden){location.hash='';requestAnimationFrame(()=>requestAnimationFrame(()=>nav.scrollIntoView({behavior:'smooth'})));}
+ else nav.scrollIntoView({behavior:'smooth'});
+};
+const canvas = document.querySelector('#crystal'),
+  ctx = canvas.getContext('2d'),
+  rays = [...orbit.children];
+let active=-1, targetYaw=.45, lastInteraction=performance.now(), previousYaw=.45, previousPitch=.12, lightAmount=0, manualMotionUntil=0;let yaw = 0.45,
+  pitch = 0.12,
+  paused = matchMedia('(prefers-reduced-motion: reduce)').matches,
+  drag = false,
+  lastX = 0,
+  lastY = 0,
+  travel = 0,
+  faces = [];
+const pause = document.querySelector('#pause');
+function pauseLabel() {
+  pause.textContent = paused ? '▷' : 'Ⅱ';
+  pause.setAttribute(
+    'aria-label',
+    paused ? 'Enable pointer-following motion' : 'Pause pointer-following motion'
+  );
+}
+pauseLabel();
+const cueText=document.querySelector('#crystal-cue small');
+if(matchMedia('(pointer: coarse)').matches)cueText.textContent='Touch and drag to reveal light';
+pause.onclick = () => {
+  paused = !paused;
+  pauseLabel();
+};
+const V = [
+    [0, 1.58, 0],
+    [0, -1.58, 0],
+  ],
+  P = [];
+for (const y of [0.68, -0.45]) {
+  for (let i = 0; i < 4; i++) {
+    const a = i * Math.PI / 2 + Math.PI / 4;
+    V.push([Math.cos(a) * 0.94, y, Math.sin(a) * 0.94]);
+  }
+}
+for (let i = 0; i < 4; i++) {
+  const j = (i + 1) % 4;
+  P.push(
+    { v: [0, 2 + i, 2 + j], i },
+    { v: [2 + i, 6 + i, 6 + j, 2 + j], i },
+    { v: [1, 6 + j, 6 + i], i }
+  );
+}
+const spectral = [
+  '#ee6f78',
+  '#f3a45a',
+  '#f3d770',
+  '#95ca8a',
+  '#68c8cd',
+  '#7299df',
+  '#ae83ce',
+];
+function path(q) {
+  ctx.beginPath();
+  q.forEach((a, i) => (i ? ctx.lineTo(a.x, a.y) : ctx.moveTo(a.x, a.y)));
+  ctx.closePath();
+}
+function draw() {
+  const w = canvas.clientWidth,
+    h = canvas.clientHeight,
+    d = Math.min(devicePixelRatio || 1, 2);
+  if (!w || !h) {
+    requestAnimationFrame(draw);
+    return;
+  }
+  if (
+    canvas.width !== Math.round(w * d) ||
+    canvas.height !== Math.round(h * d)
+  ) {
+    canvas.width = Math.round(w * d);
+    canvas.height = Math.round(h * d);
+  }
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  const mobile = true,
+    cx = w * .50,
+    cy = h * .50,
+    s = Math.min(w * .25, h * .265);
+  const glow = ctx.createRadialGradient(
+    w * 0.15,
+    h * 0.12,
+    0,
+    w * 0.15,
+    h * 0.12,
+    w * 0.95
+  );
+  glow.addColorStop(0, '#fffffff0');
+  glow.addColorStop(1, '#e1d7c200');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, w, h);
+  ctx.save();
+  ctx.filter = 'blur(8px)';
+  ctx.fillStyle = '#a19b8b20';
+  for (let i = -2; i < 4; i++) {
+    ctx.beginPath();
+    ctx.moveTo(w * i * 0.32, -20);
+    ctx.lineTo(w * i * 0.32 + 12, -20);
+    ctx.lineTo(w * (i * 0.32 + 0.9) + 12, h + 20);
+    ctx.lineTo(w * (i * 0.32 + 0.9), h + 20);
+    ctx.fill();
+  }
+  ctx.restore();
+  // Separate optical shafts appear during movement, with angle-linked emphasis.
+  const phase=yaw*1.8+pitch*.7;
+  const hues=[216,322,346,195];
+  const index=((phase/(Math.PI/2))%4+4)%4;
+  const dominant=drag||performance.now()<manualMotionUntil?Math.round(index)%4:mobileSelected;
+  if(drag)updateMobilePath(dominant);
+  const moved=Math.abs(yaw-previousYaw)+Math.abs(pitch-previousPitch);
+  previousYaw=yaw;previousPitch=pitch;
+  const desired=(drag||moved>.0009)?1:.38;
+  lightAmount+=(desired-lightAmount)*(desired?.22:.16);
+  const lit=lightAmount>.025;
+  const color=(i,alpha)=>'hsla('+hues[i]+',78%,51%,'+alpha+')';
+  rays.forEach((b,i)=>b.classList.toggle('illuminated',(lit&&i===dominant)||active===i));
+  const entry={x:cx-s*.70,y:cy-s*.16},exit={x:cx+s*.64,y:cy+s*.08};
+  const source={x:0,y:h*.06};
+  function beam(a,b,wa,wb,fill,blur=0){
+    ctx.save();ctx.filter=blur?'blur('+blur+'px)':'none';ctx.fillStyle=fill;
+    path([{x:a.x,y:a.y-wa},{x:b.x,y:b.y-wb},{x:b.x,y:b.y+wb},{x:a.x,y:a.y+wa}]);ctx.fill();ctx.restore();
+  }
+  if(lit){
+    const white=ctx.createLinearGradient(source.x,source.y,entry.x,entry.y);
+    white.addColorStop(0,'rgba(255,247,216,'+(.25*lightAmount)+')');
+    white.addColorStop(1,'rgba(255,255,255,'+(.92*lightAmount)+')');
+    beam(source,entry,19,7,white,7);
+    beam(source,entry,9,4,white,2);
+    const labelX=w*.98;
+    // Four separate shafts, each ending at its own navigation marker.
+    // Rotation brings one shaft into focus without washing over the text.
+    ctx.save();ctx.beginPath();ctx.rect(0,0,Math.max(0,labelX-4),h);ctx.clip();
+    for(let i=0;i<4;i++){
+      const strength=(.5+.5*Math.cos(phase-i*Math.PI/2));
+      const intensity=lightAmount*(.13+.87*Math.pow(strength,4));
+      const end={x:labelX-7,y:h*(.18+i*.21)};
+      if(end.x<=exit.x+2)continue;
+      const g=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
+      g.addColorStop(0,color(i,.78*intensity));
+      g.addColorStop(.55,color(i,.68*intensity));
+      g.addColorStop(1,color(i,.40*intensity));
+      const width=Math.min(12,h*.021);
+      beam(exit,end,3,width,g,3);
+      beam(exit,end,2,width*.65,g,1.2);
+      const core=ctx.createLinearGradient(exit.x,exit.y,end.x,end.y);
+      core.addColorStop(0,'rgba(255,255,255,'+(.82*intensity)+')');
+      core.addColorStop(.45,'rgba(255,255,255,'+(.48*intensity)+')');
+      core.addColorStop(1,color(i,.30*intensity));
+      beam(exit,end,.9,width*.25,core,.7);
+    }
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#9d958873';
+  ctx.lineWidth = 0.65;
+  ctx.beginPath();
+  ctx.moveTo(cx, 0);
+  ctx.lineTo(cx, cy - s * 1.48);
+  ctx.stroke();
+  const points = V.map(([x, y, z]) => {
+    const X = x * Math.cos(yaw) + z * Math.sin(yaw),
+      Z = -x * Math.sin(yaw) + z * Math.cos(yaw);
+    const Y = y * Math.cos(pitch) - Z * Math.sin(pitch),
+      depth = y * Math.sin(pitch) + Z * Math.cos(pitch),
+      f = 5 / (5 - depth);
+    return { x: cx + X * s * f, y: cy - Y * s * f, z: depth };
+  });
+  faces = P.map(o => ({
+    ...o,
+    p: o.v.map(i => points[i]),
+    z: o.v.reduce((n, i) => n + points[i].z, 0) / o.v.length,
+  })).sort((a, b) => a.z - b.z);
+  for (const f of faces) {
+    const q = f.p;
+    path(q);
+    const g = ctx.createLinearGradient(q[0].x, q[0].y, q[2].x, q[2].y);
+    g.addColorStop(0, '#fffffff0');
+    g.addColorStop(0.23, '#bdcdd458');
+    g.addColorStop(0.44, '#e1eaf018');
+    g.addColorStop(0.65, '#fefefb10');
+    g.addColorStop(0.86, '#8298aa48');
+    g.addColorStop(1, '#ffffffd9');
+    ctx.fillStyle = g;
+    ctx.fill();
+    ctx.strokeStyle = f.z > 0 ? '#ffffffee' : '#7c97a43d';
+    ctx.lineWidth = f.z > 0 ? 1.35 : 0.7;
+    ctx.stroke();
+  }
+  // Restrict transmitted light to the actual glass silhouette.
+  if(lit){
+    ctx.save();
+    const hull=points.slice().sort((a,b)=>a.x-b.x||a.y-b.y);
+    const cross=(o,a,b)=>(a.x-o.x)*(b.y-o.y)-(a.y-o.y)*(b.x-o.x);
+    const lower=[],upper=[];
+    for(const p of hull){while(lower.length>=2&&cross(lower[lower.length-2],lower[lower.length-1],p)<=0)lower.pop();lower.push(p);}
+    for(const p of hull.slice().reverse()){while(upper.length>=2&&cross(upper[upper.length-2],upper[upper.length-1],p)<=0)upper.pop();upper.push(p);}
+    path(lower.slice(0,-1).concat(upper.slice(0,-1)));ctx.clip();
+    const inner={x:cx-s*.12,y:cy-s*.04};
+    beam(entry,inner,8,5,'rgba(255,255,255,'+(.65*lightAmount)+')',3);
+    beam(entry,inner,3.5,2.5,'rgba(255,255,255,'+(.93*lightAmount)+')',.8);
+    beam(inner,exit,5,9,color(dominant,.52*lightAmount),3);
+    beam(inner,exit,2.8,5,color(dominant,.8*lightAmount),1);
+    beam(inner,exit,1,1.5,'rgba(255,255,255,'+(.65*lightAmount)+')',.7);
+    ctx.restore();
+  }
+  for (let i = 2; i < 6; i++) {
+    const p = points[i];
+    if (p.z < 0) continue;
+    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 12);
+    g.addColorStop(0, '#ffffff');
+    g.addColorStop(0.15, '#ffffffbb');
+    g.addColorStop(1, '#ffffff00');
+    ctx.fillStyle = g;
+    ctx.fillRect(p.x - 12, p.y - 12, 24, 24);
+  }
+  rays.forEach((b, i) => {
+    b.style.left=(w*(mobile?.56:.62))+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
+  });
+  if(!drag&&!home.hidden&&(!paused||performance.now()<manualMotionUntil)){ yaw+=(targetYaw-yaw)*.10; }
+  requestAnimationFrame(draw);
+}
+// Direct drag works even with ambient animation paused.
+const optics=canvas.closest('.optics');
+let capturedId=null,dragStartYaw=0,dragStartPitch=0,dragOriginX=0,dragOriginY=0,mobileSelected=0,gestureAxis=null;
+const mobileButtons=document.querySelector('#mobile-colours');
+pages.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.style.setProperty('--swatch',p.tone);b.setAttribute('aria-label',p.name);b.innerHTML='<i aria-hidden="true"></i>';b.onclick=()=>selectMobilePath(i);mobileButtons.append(b)});
+function updateMobilePath(i){if(i===mobileSelected&&document.querySelector('#mobile-name').textContent)return;mobileSelected=i;const p=pages[i];const card=document.querySelector('#mobile-path');card.style.setProperty('--mobile-wash',p.wash);card.style.setProperty('--mobile-tone',p.tone);document.querySelector('#mobile-identity').textContent=p.identity;document.querySelector('#mobile-name').textContent=p.name;document.querySelector('#mobile-description').textContent=p.short;document.querySelector('#mobile-explore').href='#'+p.slug;[...mobileButtons.children].forEach((b,j)=>b.setAttribute('aria-pressed',String(j===i)));}
+function selectMobilePath(i){i=(i+4)%4;updateMobilePath(i);targetYaw=(i*Math.PI/2-pitch*.7)/1.8;manualMotionUntil=performance.now()+700;if(paused)yaw=targetYaw;lightAmount=1;}
+updateMobilePath(0);
+function beginTurn(e){
+  if(e.button!==0&&e.pointerType==='mouse')return;
+  if(e.target.closest('button'))return;
+  if(e.pointerType==='mouse')e.preventDefault();
+  gestureAxis=e.pointerType==='touch'?null:'horizontal';
+  capturedId=e.pointerId;drag=false;travel=0;
+  dragOriginX=e.clientX;dragOriginY=e.clientY;
+  dragStartYaw=yaw;dragStartPitch=pitch;
+  if(gestureAxis==='horizontal'){drag=true;optics.classList.add('turning','has-turned');try{optics.setPointerCapture(e.pointerId)}catch(_){}}
+}
+function moveTurn(e){
+  if(e.pointerId!==capturedId)return;
+  const dx=e.clientX-dragOriginX,dy=e.clientY-dragOriginY;
+  if(!gestureAxis){if(Math.hypot(dx,dy)<9)return;if(Math.abs(dy)>Math.abs(dx)){capturedId=null;return;}gestureAxis='horizontal';drag=true;optics.classList.add('turning','has-turned');try{optics.setPointerCapture(e.pointerId)}catch(_){}}
+  if(e.cancelable)e.preventDefault();
+  yaw=dragStartYaw+dx*.022;
+  pitch=dragStartPitch;
+  targetYaw=yaw;travel=Math.max(travel,Math.hypot(dx,dy));
+  manualMotionUntil=performance.now()+300;
+}
+function endTurn(e){if(e.pointerId!==capturedId)return;const wasDragging=drag;drag=false;targetYaw=yaw;capturedId=null;gestureAxis=null;optics.classList.remove('turning');if(wasDragging){updateMobilePath(Math.round((((yaw*1.8+pitch*.7)/(Math.PI/2))%4+4)%4)%4);}}
+optics.addEventListener('pointerdown',beginTurn,true);
+window.addEventListener('pointermove',moveTurn,{passive:false});
+window.addEventListener('pointerup',endTurn);
+window.addEventListener('pointercancel',endTurn);
+optics.addEventListener('lostpointercapture',endTurn);
+optics.addEventListener('pointermove',e=>{
+  if(drag||paused||e.pointerType==='touch'||e.target.closest('button'))return;
+  const r=canvas.getBoundingClientRect();
+  targetYaw=.45+(e.clientX-r.left-r.width*.5)/Math.max(r.width,1)*6.28;
+});
+// Scrolling does not alter the selected mobile pathway.
+canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();manualMotionUntil=performance.now()+450;selectMobilePath(mobileSelected+(e.key==='ArrowRight'?1:-1));});
+route();
+draw();
+
+const prompts=['What childhood memory can you still see, smell or feel?','When did you do something wonderfully ridiculous?','What story about someone you love would you like to preserve?','When did your life take an unexpected turn?','What ordinary moment became extraordinary in hindsight?'];let mi=-1;document.querySelector('#memory-draw').onclick=()=>{mi=(mi+1+Math.floor(Math.random()*(prompts.length-1)))%prompts.length;document.querySelector('#memory-prompt').textContent=prompts[mi];};document.querySelector('#memory-save').onclick=()=>{const blob=new Blob([document.querySelector('#memory-prompt').textContent+'\n\n'+document.querySelector('#memory-notes').value],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='my-memory.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};</script>
+  </body>
+</html>
