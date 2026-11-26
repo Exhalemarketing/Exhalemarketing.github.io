@@ -552,6 +552,9 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
 .ray.illuminated strong{color:var(--tone);text-shadow:none}
 .ray.illuminated i{box-shadow:none;outline:1px solid var(--tone);outline-offset:3px}
 .ray.illuminated span{color:var(--tone)}
+
+/* Explicit interaction stacking: canvas receives movement, labels remain above it. */
+.optics{z-index:2}.optics canvas{z-index:1;inset:0;pointer-events:auto;touch-action:pan-y}.optics .orbit{z-index:2;pointer-events:none}.optics .ray{pointer-events:auto}.optics #pause{z-index:3}.optics .caption{z-index:3;pointer-events:none}.optics canvas:focus-visible{outline:2px solid #a88b56;outline-offset:-4px}
 </style>
   </head>
   <body>
@@ -575,8 +578,8 @@ nav button .path-arrow{font:11px Arial,sans-serif;color:var(--tone);margin-top:1
           </div>
           <div class="optics">
             <canvas
-              id="crystal"
-              aria-label="Rotating crystal with rainbow light"
+              id="crystal" tabindex="0"
+              aria-label="Interactive crystal. Move your pointer, drag, or use the left and right arrow keys to turn it."
             ></canvas>
             <div class="orbit" id="orbit"></div>
             <div class="caption">FOLLOW THE LIGHT</div>
@@ -651,7 +654,7 @@ document.querySelector('#menu').onclick=()=>{
 const canvas = document.querySelector('#crystal'),
   ctx = canvas.getContext('2d'),
   rays = [...orbit.children];
-let active=-1, targetYaw=.45, lastInteraction=performance.now(), previousYaw=.45, previousPitch=.12, lightAmount=0;let yaw = 0.45,
+let active=-1, targetYaw=.45, lastInteraction=performance.now(), previousYaw=.45, previousPitch=.12, lightAmount=0, manualMotionUntil=0;let yaw = 0.45,
   pitch = 0.12,
   paused = matchMedia('(prefers-reduced-motion: reduce)').matches,
   drag = false,
@@ -664,7 +667,7 @@ function pauseLabel() {
   pause.textContent = paused ? '▷' : 'Ⅱ';
   pause.setAttribute(
     'aria-label',
-    paused ? 'Resume rotation' : 'Pause rotation'
+    paused ? 'Enable pointer-following motion' : 'Pause pointer-following motion'
   );
 }
 pauseLabel();
@@ -757,7 +760,7 @@ function draw() {
   const dominant=Math.round(index)%4;
   const moved=Math.abs(yaw-previousYaw)+Math.abs(pitch-previousPitch);
   previousYaw=yaw;previousPitch=pitch;
-  const desired=(!paused&&moved>.0009)?1:0;
+  const desired=(moved>.0009&&(!paused||performance.now()<manualMotionUntil))?1:0;
   lightAmount+=(desired-lightAmount)*(desired?.22:.16);
   const lit=lightAmount>.025;
   const color=(i,alpha)=>'hsla('+hues[i]+',78%,51%,'+alpha+')';
@@ -847,21 +850,22 @@ function draw() {
   rays.forEach((b, i) => {
     b.style.left=(w*(mobile?.56:.62))+'px';b.style.top=(h*(.23+i*.17)-b.offsetHeight/2)+'px';
   });
-  if(!paused&&!drag&&!home.hidden){ yaw+=(targetYaw-yaw)*.065; }
+  if(!drag&&!home.hidden&&(!paused||performance.now()<manualMotionUntil)){ yaw+=(targetYaw-yaw)*.10; }
   requestAnimationFrame(draw);
 }
 canvas.addEventListener('pointerdown', e => {
-  if (paused) return;
+  manualMotionUntil=performance.now()+650;
   lastInteraction=performance.now();
   drag = true;
   travel = 0;
   lastX = e.clientX;
   lastY = e.clientY;
-  canvas.setPointerCapture(e.pointerId);
+  try {canvas.setPointerCapture(e.pointerId);} catch (_) {}
 });
 canvas.addEventListener('pointermove', e => {
   lastInteraction=performance.now();
-  if (!drag) {if(!paused){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/r.width*6.28;}return;}
+  if (!drag) {if(!paused&&e.pointerType!=='touch'){const r=canvas.getBoundingClientRect();targetYaw=.45+(e.clientX-r.left-r.width*.5)/Math.max(r.width,1)*6.28;}return;}
+  manualMotionUntil=performance.now()+220;
   const dx = e.clientX - lastX,
     dy = e.clientY - lastY;
   yaw += dx * 0.013;
@@ -889,6 +893,7 @@ canvas.addEventListener('pointerup', e => {
 });
 canvas.addEventListener('pointercancel', () => (drag = false));
 window.addEventListener('scroll',()=>{if(!paused)targetYaw=.45+Math.min(window.scrollY/1500,.5);},{passive:true});
+canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();manualMotionUntil=performance.now()+450;targetYaw+=e.key==='ArrowRight'?.87:-.87;});
 route();
 draw();
 
