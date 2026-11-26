@@ -802,13 +802,10 @@ button:disabled,[aria-disabled="true"]{cursor:not-allowed}
 <script src="./book-cover.js?v=1"></script>
 <script src="./portrait.js?v=1"></script>
 <script src="./intaglio-emblem.js?v=1"></script>
-<link rel="stylesheet" href="./prism-shell.css?v=2"></head>
+<link rel="stylesheet" href="./prism-shell.css?v=3"></head>
   <body>
     <div id="app">
-      <header class="prism-header">
-        <a class="wordmark" href="#">Alessandra <span>Sagredo</span></a
-        ><div class="header-links"><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a><button id="menu">Find your path <span>✳</span></button></div>
-      </header>
+      <header class="prism-header"><details class="prism-menu"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</summary><div class="prism-links"><a href="./">Home</a><a href="./#explore">Consciousness &amp; intuition</a><a href="./#become">Transformation &amp; Death</a><a href="./#storykeeper">Stories &amp; memories</a><a href="./#create">Literature &amp; art</a><a href="./about.html?v=4">About</a><a href="./connect.html">Connect</a><a class="card-link" href="./possibility.html">Take a moment · Pick a card</a></div></details><a class="wordmark" href="./">Alessandra <span>Sagredo</span></a><div class="prism-utility"><a href="./connect.html">Connect</a></div></header>
       <main>
 <div id="home-view">
         <section class="hero">
@@ -929,10 +926,7 @@ pages.forEach((p,i)=>{
  const r=document.createElement('button');r.className='ray';r.style.setProperty('--tone',p.tone);
  r.innerHTML='<i></i><div><strong>'+p.name+'</strong><small>'+p.identity+'</small></div><span>→</span>'; r.addEventListener('pointerenter',()=>active=i);r.addEventListener('pointerleave',()=>active=-1);r.addEventListener('focus',()=>active=i);r.addEventListener('blur',()=>active=-1);r.onclick=()=>openWorld(i);orbit.append(r);
 });
-document.querySelector('#menu').onclick=()=>{
- if(home.hidden){location.hash='';requestAnimationFrame(()=>requestAnimationFrame(()=>nav.scrollIntoView({behavior:'smooth'})));}
- else nav.scrollIntoView({behavior:'smooth'});
-};
+
 const canvas = document.querySelector('#crystal'),
   ctx = canvas.getContext('2d'),
   rays = [...orbit.children];
@@ -1232,5 +1226,5 @@ route();
 draw();
 
 const prompts=['What childhood memory can you still see, smell or feel?','When did you do something wonderfully ridiculous?','What story about someone you love would you like to preserve?','When did your life take an unexpected turn?','What ordinary moment became extraordinary in hindsight?'];let mi=-1;document.querySelector('#memory-draw').onclick=()=>{mi=(mi+1+Math.floor(Math.random()*(prompts.length-1)))%prompts.length;document.querySelector('#memory-prompt').textContent=prompts[mi];};document.querySelector('#memory-save').onclick=()=>{const blob=new Blob([document.querySelector('#memory-prompt').textContent+'\n\n'+document.querySelector('#memory-notes').value],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='my-memory.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};</script>
-  </body>
+  <script>document.addEventListener('click',e=>{const m=document.querySelector('.prism-header .prism-menu');if(m&&(!m.contains(e.target)||e.target.closest('.prism-links a')))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'){const m=document.querySelector('.prism-header .prism-menu[open]');if(m){m.open=false;m.querySelector('summary').focus();}}});</script></body>
 </html>
