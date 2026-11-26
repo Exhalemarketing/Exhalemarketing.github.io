@@ -402,12 +402,12 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
 #patronage svg{color:#D6B782;width:100px;height:40px;margin:0}
 #patronage h2{font-size:clamp(29px,4vw,36px);font-weight:600;line-height:1.15;letter-spacing:-.5px;color:#F4DEC0;margin:0}
 #patronage p{font-size:17px;line-height:1.7;color:#F8F3F2;max-width:440px;margin:0}
-#patronage .patronage-cta{background:transparent;border:1px solid #D6B782;color:#F4DEC0;border-radius:7px;padding:13px 22px;font-size:16px;font-weight:500;min-height:48px;opacity:1;cursor:default}
+#patronage .patronage-cta{background:transparent;border:1px solid #D6B782;color:#F4DEC0;border-radius:7px;padding:13px 22px;font-size:16px;font-weight:500;min-height:48px;opacity:1;cursor:pointer}
 #patronage .patronage-pending{font-size:12px;color:#D6B782;margin-top:-10px;letter-spacing:.5px}
 @media(max-width:480px){#patronage.patronage{padding:30px 22px;gap:16px}#patronage p{font-size:16px}}
 
 #card-history{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:3px 0}#card-history button{min-width:0;font-size:15px;padding:11px 8px}#card-history button:disabled{opacity:.42;cursor:default;background:transparent}#restart-cards{grid-column:1/-1;color:#735269}#card-history[hidden]{display:none!important}
-.patronage a.patronage-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none;cursor:pointer;opacity:1}.patronage a.patronage-cta:focus-visible{outline:2px solid currentColor;outline-offset:4px}</style>
+.patronage a.patronage-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none;cursor:pointer;opacity:1}.patronage a.patronage-cta:focus-visible{outline:2px solid currentColor;outline-offset:4px}#patronage{position:relative;isolation:isolate;z-index:10;pointer-events:auto!important}#patronage .patronage-cta{position:relative;z-index:11;pointer-events:auto!important;cursor:pointer!important;touch-action:manipulation;background:#D6B782;color:#12334E;font-weight:600}#patronage .patronage-cta:hover,#patronage .patronage-cta:focus-visible{background:#F4DEC0;color:#12334E}#patronage .patronage-pending{pointer-events:none}</style>
   </head>
   <body>
     <div id="app">
@@ -453,7 +453,7 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
             <svg viewBox="0 0 120 48" width="100" height="40" aria-hidden="true"><g stroke="currentColor" stroke-width="1" fill="none"><path d="M5 24 Q30 0 60 24 Q90 48 115 24 M5 24 Q30 48 60 24 Q90 0 115 24"/><path d="M60 9 L65 20 L76 24 L65 28 L60 39 L55 28 L44 24 L55 20Z" fill="currentColor"/></g></svg>
             <h2 id="patronage-title">A Little Patronage</h2>
             <p>If you've enjoyed wandering through my world and would like to encourage a little more creation, your patronage is always welcome.</p>
-            <a class="patronage-cta" href="https://www.paypal.com/ncp/payment/RR4TUCJRWSTR4" target="_blank" rel="noopener noreferrer">Support my creations</a><small class="patronage-pending">Choose your contribution securely through PayPal.</small>
+            <a class="patronage-cta" href="https://www.paypal.com/ncp/payment/RR4TUCJRWSTR4">Support my creations →</a><small class="patronage-pending">Choose your contribution securely through PayPal.</small>
           </aside>
         </section>
         <section id="saved" hidden>
