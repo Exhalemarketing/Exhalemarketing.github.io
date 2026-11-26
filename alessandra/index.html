@@ -756,12 +756,13 @@ button:focus-visible,a:focus-visible{outline-color:#A21E49}
 .living-art span{display:none}
 @media(max-width:900px){.world-hero,.story-section{grid-template-columns:1fr}.living-art,.living-art[data-art="storykeeper"]{height:clamp(390px,95vw,540px);min-height:390px}.living-art .original-etching,.living-art .etching-colour{inset:2% 3% 12%;width:94%;height:86%}}
 @media(prefers-reduced-motion:reduce){.living-art .etching-colour{transform:none!important;transition:none!important}}
-.literary-book{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,56px)}.book-cover-link{display:block;width:100%;max-width:240px;margin:auto}.book-cover-image{display:block;width:100%;height:auto;object-fit:contain;box-shadow:8px 14px 28px #12334e28}.book-copy{min-width:0}@media(max-width:650px){.literary-book{grid-template-columns:1fr}.book-cover-link{max-width:180px;margin:0 auto 12px}}</style>
+.literary-book{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,56px)}.book-cover-link{display:block;width:100%;max-width:240px;margin:auto}.book-cover-image{display:block;width:100%;height:auto;object-fit:contain;box-shadow:8px 14px 28px #12334e28}.book-copy{min-width:0}@media(max-width:650px){.literary-book{grid-template-columns:1fr}.book-cover-link{max-width:180px;margin:0 auto 12px}}.about-portrait{float:right;width:clamp(220px,34%,400px);margin:10px 0 24px 36px}.about-portrait img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 12px 32px #12334e19}.about-content::after{content:'';display:block;clear:both}@media(max-width:680px){.about-portrait{float:none;width:min(100%,320px);margin:22px auto 26px}}</style>
   <script src="./art-explore.js?v=27"></script>
 <script src="./art-become.js?v=27"></script>
 <script src="./art-storykeeper.js?v=27"></script>
 <script src="./art-create.js?v=27"></script>
 <script src="./book-cover.js?v=1"></script>
+<script src="./portrait.js?v=1"></script>
 </head>
   <body>
     <div id="app">
@@ -832,7 +833,7 @@ function showPage(p) {
 }
 function showAbout(){
  world.style.setProperty('--world-tone','#796b59');world.style.setProperty('--world-wash','#eee5d8');
- world.innerHTML="<div class=\"about-content\"><a class=\"back-link\" href=\"#\">← Return to the prism</a><div class=\"story-kicker\">ABOUT ALESSANDRA SAGREDO</div><h1>What a curious thing it is to be human.</h1><p class=\"about-lead\">Pain. Pleasure. And the delicious absurdity of it all.</p><p>If life were a lover, I'd describe our relationship in one word. Tumultuous. I'm fascinated by the emotional ups and downs of being human, the sensual nature of our existence and our obsession, while we're still living, with what comes next.</p><p>Why do I do what I do? I'm compelled to. I love all things mystic. I love to inspire others.</p><p>I create in everything I do. I like to bring more beauty and life to each moment. Writing, art, exploring consciousness, helping someone preserve a memory or talking about death are all expressions of that curiosity.</p><p>Perhaps something here will inspire you. Perhaps it will bring you a little relief or joy. That would delight me.</p><p>I'm an author, artist, spiritual practitioner, certified death doula and Chartered Marketer. My business advisory work is through <a href=\"https://cal.com/exhaleconsulting\">Exhale</a>.</p><a class=\"world-action\" href=\"#\">Explore my world →</a></div>"+pageLinks('');
+ world.innerHTML="<div class=\"about-content\"><a class=\"back-link\" href=\"#\">← Return to the prism</a><div class=\"story-kicker\">ABOUT ALESSANDRA SAGREDO</div><figure class=\"about-portrait\"><img alt=\"Alessandra Sagredo holding a red mug\" width=\"400\" height=\"400\"></figure><h1>What a curious thing it is to be human.</h1><p class=\"about-lead\">Pain. Pleasure. And the delicious absurdity of it all.</p><p>If life were a lover, I'd describe our relationship in one word. Tumultuous. I'm fascinated by the emotional ups and downs of being human, the sensual nature of our existence and our obsession, while we're still living, with what comes next.</p><p>Why do I do what I do? I'm compelled to. I love all things mystic. I love to inspire others.</p><p>I create in everything I do. I like to bring more beauty and life to each moment. Writing, art, exploring consciousness, helping someone preserve a memory or talking about death are all expressions of that curiosity.</p><p>Perhaps something here will inspire you. Perhaps it will bring you a little relief or joy. That would delight me.</p><p>I'm an author, artist, spiritual practitioner, certified death doula and Chartered Marketer. My business advisory work is through <a href=\"https://cal.com/exhaleconsulting\">Exhale</a>.</p><a class=\"world-action\" href=\"#\">Explore my world →</a></div>"+pageLinks('');
 }
 
 document.getElementById('story-etching').src=window.soulphoriaArt?.storykeeper||'';
@@ -869,7 +870,7 @@ function route(){
  world.hidden=!p&&!isAbout;
  story.hidden=!isStory;
  if(p)showPage(p);
- if(isAbout)showAbout();
+ if(isAbout){showAbout();const portrait=world.querySelector('.about-portrait img');if(portrait&&window.alessandraPortrait)portrait.src=window.alessandraPortrait;}
  wireLivingArt();
  document.querySelectorAll('.book-cover-image').forEach(img=>{if(window.soulphoriaBookCover)img.src=window.soulphoriaBookCover;});
  document.title=(p?p.name+' | ':isStory?'The Storykeeper | ':isAbout?'About | ':'')+'Alessandra Sagredo';
