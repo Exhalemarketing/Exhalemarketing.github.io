@@ -41,3 +41,9 @@ header.prism-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax
 
 /* Common outer page width; retain intentional readable text measures inside sections. */
 main{box-sizing:border-box;width:100%;max-width:var(--prism-width);margin-inline:auto}header.prism-header{max-width:var(--prism-width)}
+
+/* Match approved screenshot: 75% centered desktop canvas, full-width mobile. */
+:root{--prism-page:75%;--prism-width:1800px}
+header.prism-header,main,main:has(> #home-view:not([hidden])),body>footer,#app>footer{width:var(--prism-page);max-width:var(--prism-width);margin-inline:auto;box-sizing:border-box}
+@media(max-width:1100px){:root{--prism-page:92%}}
+@media(max-width:720px){:root{--prism-page:100%}}
