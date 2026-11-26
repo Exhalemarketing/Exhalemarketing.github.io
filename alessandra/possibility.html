@@ -405,6 +405,8 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
 #patronage .patronage-cta{background:transparent;border:1px solid #D6B782;color:#F4DEC0;border-radius:7px;padding:13px 22px;font-size:16px;font-weight:500;min-height:48px;opacity:1;cursor:default}
 #patronage .patronage-pending{font-size:12px;color:#D6B782;margin-top:-10px;letter-spacing:.5px}
 @media(max-width:480px){#patronage.patronage{padding:30px 22px;gap:16px}#patronage p{font-size:16px}}
+
+#card-history{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:3px 0}#card-history button{min-width:0;font-size:15px;padding:11px 8px}#card-history button:disabled{opacity:.42;cursor:default;background:transparent}#restart-cards{grid-column:1/-1;color:#735269}#card-history[hidden]{display:none!important}
 </style>
   </head>
   <body>
@@ -438,7 +440,8 @@ button.quiet,#status,footer{color:#344B5C}#count{color:#A21E49}
           <div class="actions">
             <button class="primary" id="daily">Reveal my daily moment</button>
             <p id="daily-note">A new reflection each day, just for you.</p>
-            <button id="draw">Explore another moment</button>
+            <button id="draw">Reveal another moment</button>
+            <div id="card-history" hidden aria-label="Card navigation"><button id="previous-card" disabled>Previous card</button><button id="next-card" disabled>Next card</button><button id="restart-cards" class="quiet">Start over</button></div>
             <div id="extras" hidden>
               <button id="save">Save reflection</button
               ><button id="share">Share reflection</button>
@@ -1133,6 +1136,14 @@ cards.push(...[
 ]);
 const $ = id => document.getElementById(id);
 let current = -1;
+let revealed = [], position = -1;
+function updateCardNavigation(){
+  $('card-history').hidden=position<0;
+  $('previous-card').disabled=position<=0;
+  $('next-card').disabled=position<0||position>=revealed.length-1;
+}
+function navigateCard(step){const next=position+step;if(next<0||next>=revealed.length)return;position=next;show(revealed[position],false);}
+
 let bag = [];
 let saved = [];
 try {
@@ -1148,8 +1159,10 @@ function persist() {
   }
   $('count').textContent = String(saved.length);
 }
-function show(i) {
+function show(i, record=true) {
+  if(record && (position<0 || revealed[position]!==i)){revealed=revealed.slice(0,position+1);revealed.push(i);position=revealed.length-1;}
   current = i;
+  updateCardNavigation();
   bag = bag.filter(n => n !== i);
   $('deck').hidden = true;
   $('face').hidden = false;
@@ -1158,7 +1171,7 @@ function show(i) {
   $('category').textContent = cards[i][1].toUpperCase();
   $('reflection').textContent = cards[i][2];
   $('source').textContent = 'Inspired by ' + cards[i][3];
-  $('draw').textContent = 'Explore another moment';
+  $('draw').textContent = 'Reveal another moment';
   $('save').textContent = saved.includes(i)
     ? 'Remove saved reflection'
     : 'Save reflection';
@@ -1173,7 +1186,7 @@ try { dailyRecord=JSON.parse(localStorage.getItem('possibility-daily')||'null');
 function validDaily(record, day) { return record && record.day===day && Number.isInteger(record.index) && !!cards[record.index]; }
 function refreshDaily() {
   const has=validDaily(dailyRecord,localDay());
-  $('daily').textContent=has?"Revisit my daily moment":"Reveal my daily moment";
+  $('daily').textContent="Reveal my daily moment";
   $('daily-note').textContent=has?"Your daily reflection is here until tomorrow. Explore more whenever you wish.":"A new reflection each day, just for you.";
 }
 function dailyDraw() {
@@ -1286,18 +1299,23 @@ $('share').onclick = () => share(current);
 $('share-app').onclick = () => share(null);
 $('collection').onclick = collection;
 $('back').onclick = back;
-$('home').onclick = e => {
-  e.preventDefault();
+function restartCards(){
   back();
   current = -1;
   bag = [];
+  revealed=[];position=-1;updateCardNavigation();
   $('deck').hidden = false;
   $('face').hidden = true;
   $('extras').hidden = true;
-  $('draw').textContent = 'Explore another moment';
+  $('draw').textContent = 'Reveal another moment';
   $('status').textContent = '';
   history.replaceState(null, '', location.pathname + location.search);
-};
+  refreshDaily();
+}
+$('home').onclick=e=>{e.preventDefault();restartCards();};
+$('previous-card').onclick=()=>navigateCard(-1);
+$('next-card').onclick=()=>navigateCard(1);
+$('restart-cards').onclick=restartCards;
 persist();
 const match = location.hash.match(/^#moment-(\d+)$/);
 if (match && cards[Number(match[1]) - 1]) show(Number(match[1]) - 1);
